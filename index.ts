@@ -1,10 +1,12 @@
-import fs from "fs";
+// import type { StripeSpec } from "./spec/spec3.ts";
+// import type { STRIPE_EVENT_TYPES } from "./src/const.ts";
 
-performance.now();
-const spec = fs.readFileSync("./openapi/openapi/spec3.json", {
-  encoding: "utf-8",
-});
-console.log(`took ${performance.now()} to read`);
-const data = JSON.parse(spec);
-console.log(data);
-console.log(`took ${performance.now()} to parse`);
+// const spec = Deno.readTextFileSync("./openapi/openapi/spec3.json");
+// const data = JSON.parse(spec) as StripeSpec;
+// const schemas = data.components.schemas;
+
+function main() {
+  console.log("hi");
+}
+
+main();
