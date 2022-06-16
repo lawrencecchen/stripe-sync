@@ -11,6 +11,7 @@ model stripe_customer {
   created BigInt
   currency String?
   default_source_id String?
+  default_source stripe_alipay_account? @relation(name: "customer_default_source_to_alipay_account", fields: [default_source_id], references: [id])
   delinquent Boolean?
   description String?
   discount Json?
@@ -71,6 +72,28 @@ model stripe_capability {
   status String
 }
 
+model stripe_bank_account {
+  account_id String?
+  account stripe_account? @relation(name: "bank_account_account_to_account", fields: [account_id], references: [id])
+  account_holder_name String?
+  account_holder_type String?
+  account_type String?
+  available_payout_methods Json?
+  bank_name String?
+  country String
+  currency String
+  customer_id String?
+  customer stripe_customer? @relation(name: "bank_account_customer_to_customer", fields: [customer_id], references: [id])
+  default_for_currency Boolean?
+  fingerprint String?
+  id String @id
+  last4 String
+  metadata Json?
+  object String
+  routing_number String?
+  status String
+}
+
 model stripe_person {
   account String
   address_kana Json?
@@ -107,19 +130,6 @@ model stripe_apple_pay_domain {
   object String
 }
 
-model stripe_fee_refund {
-  amount BigInt
-  balance_transaction_id String?
-  balance_transaction stripe_balance_transaction? @relation(name: "fee_refund_balance_transaction_to_balance_transaction", fields: [balance_transaction_id], references: [id])
-  created BigInt
-  currency String
-  fee_id String?
-  fee stripe_application_fee? @relation(name: "fee_refund_fee_to_application_fee", fields: [fee_id], references: [id])
-  id String @id
-  metadata Json?
-  object String
-}
-
 model stripe_application_fee {
   account_id String?
   account stripe_account? @relation(name: "application_fee_account_to_account", fields: [account_id], references: [id])
@@ -140,6 +150,19 @@ model stripe_application_fee {
   originating_transaction stripe_charge? @relation(name: "application_fee_originating_transaction_to_charge", fields: [originating_transaction_id], references: [id])
   refunded Boolean
   refunds Json
+}
+
+model stripe_fee_refund {
+  amount BigInt
+  balance_transaction_id String?
+  balance_transaction stripe_balance_transaction? @relation(name: "fee_refund_balance_transaction_to_balance_transaction", fields: [balance_transaction_id], references: [id])
+  created BigInt
+  currency String
+  fee_id String?
+  fee stripe_application_fee? @relation(name: "fee_refund_fee_to_application_fee", fields: [fee_id], references: [id])
+  id String @id
+  metadata Json?
+  object String
 }
 
 model stripe_apps_secret {
@@ -217,6 +240,16 @@ model stripe_bitcoin_receiver {
   transactions Json?
   uncaptured_funds Boolean
   used_for_payment Boolean?
+}
+
+model stripe_bitcoin_transaction {
+  amount BigInt
+  bitcoin_amount BigInt
+  created BigInt
+  currency String
+  id String @id
+  object String
+  receiver String
 }
 
 model stripe_charge {
@@ -369,6 +402,23 @@ model stripe_checkout_session {
   url String?
 }
 
+model stripe_item {
+  amount_discount BigInt?
+  amount_subtotal BigInt
+  amount_tax BigInt?
+  amount_total BigInt
+  currency String
+  description String
+  discounts Json?
+  id String @id
+  object String
+  price Json?
+  product_id String?
+  product stripe_product? @relation(name: "item_product_to_product", fields: [product_id], references: [id])
+  quantity BigInt?
+  taxes Json?
+}
+
 model stripe_country_spec {
   default_currency String
   id String @id
@@ -429,6 +479,23 @@ model stripe_credit_note {
   voided_at BigInt?
 }
 
+model stripe_credit_note_line_item {
+  amount BigInt
+  description String?
+  discount_amount BigInt
+  discount_amounts Json
+  id String @id
+  invoice_line_item String?
+  livemode Boolean
+  object String
+  quantity BigInt?
+  tax_amounts Json
+  tax_rates Json
+  type String
+  unit_amount BigInt?
+  unit_amount_decimal String?
+}
+
 model stripe_customer_balance_transaction {
   amount BigInt
   created BigInt
@@ -446,28 +513,6 @@ model stripe_customer_balance_transaction {
   metadata Json?
   object String
   type String
-}
-
-model stripe_bank_account {
-  account_id String?
-  account stripe_account? @relation(name: "bank_account_account_to_account", fields: [account_id], references: [id])
-  account_holder_name String?
-  account_holder_type String?
-  account_type String?
-  available_payout_methods Json?
-  bank_name String?
-  country String
-  currency String
-  customer_id String?
-  customer stripe_customer? @relation(name: "bank_account_customer_to_customer", fields: [customer_id], references: [id])
-  default_for_currency Boolean?
-  fingerprint String?
-  id String @id
-  last4 String
-  metadata Json?
-  object String
-  routing_number String?
-  status String
 }
 
 model stripe_card {
@@ -500,6 +545,7 @@ model stripe_card {
   name String?
   object String
   recipient_id String?
+  recipient stripe_recipient? @relation(name: "card_recipient_to_recipient", fields: [recipient_id], references: [id])
   status String?
   tokenization_method String?
 }
@@ -537,6 +583,22 @@ model stripe_payment_method {
   type String
 }
 
+model stripe_alipay_account {
+  created BigInt
+  customer_id String?
+  customer stripe_customer? @relation(name: "alipay_account_customer_to_customer", fields: [customer_id], references: [id])
+  fingerprint String
+  id String @id
+  livemode Boolean
+  metadata Json?
+  object String
+  payment_amount BigInt?
+  payment_currency String?
+  reusable Boolean
+  used Boolean
+  username String
+}
+
 model stripe_subscription {
   application_id String?
   application stripe_application? @relation(name: "subscription_application_to_application", fields: [application_id], references: [id])
@@ -556,6 +618,7 @@ model stripe_subscription {
   default_payment_method_id String?
   default_payment_method stripe_payment_method? @relation(name: "subscription_default_payment_method_to_payment_method", fields: [default_payment_method_id], references: [id])
   default_source_id String?
+  default_source stripe_alipay_account? @relation(name: "subscription_default_source_to_alipay_account", fields: [default_source_id], references: [id])
   default_tax_rates Json?
   description String?
   discount Json?
@@ -661,6 +724,17 @@ model stripe_financial_connections_account {
   supported_payment_method_types Json
 }
 
+model stripe_financial_connections_account_owner {
+  email String?
+  id String @id
+  name String
+  object String
+  ownership String
+  phone String?
+  raw_address String?
+  refreshed_at BigInt?
+}
+
 model stripe_financial_connections_session {
   account_holder Json?
   accounts Json
@@ -756,6 +830,7 @@ model stripe_invoice {
   default_payment_method_id String?
   default_payment_method stripe_payment_method? @relation(name: "invoice_default_payment_method_to_payment_method", fields: [default_payment_method_id], references: [id])
   default_source_id String?
+  default_source stripe_alipay_account? @relation(name: "invoice_default_source_to_alipay_account", fields: [default_source_id], references: [id])
   default_tax_rates Json
   description String?
   discount Json?
@@ -799,6 +874,29 @@ model stripe_invoice {
   total_tax_amounts Json
   transfer_data Json?
   webhooks_delivered_at BigInt?
+}
+
+model stripe_line_item {
+  amount BigInt
+  currency String
+  description String?
+  discount_amounts Json?
+  discountable Boolean
+  discounts Json?
+  id String @id
+  invoice_item String?
+  livemode Boolean
+  metadata Json
+  object String
+  price Json?
+  proration Boolean
+  proration_details Json?
+  quantity BigInt?
+  subscription String?
+  subscription_item String?
+  tax_amounts Json?
+  tax_rates Json?
+  type String
 }
 
 model stripe_issuer_fraud_record {
@@ -1235,6 +1333,26 @@ model stripe_radar_value_list {
   object String
 }
 
+model stripe_recipient {
+  active_account Json?
+  cards Json?
+  created BigInt
+  default_card_id String?
+  default_card stripe_card? @relation(name: "recipient_default_card_to_card", fields: [default_card_id], references: [id])
+  description String?
+  email String?
+  id String @id
+  livemode Boolean
+  metadata Json
+  migrated_to_id String?
+  migrated_to stripe_account? @relation(name: "recipient_migrated_to_to_account", fields: [migrated_to_id], references: [id])
+  name String?
+  object String
+  rolled_back_from_id String?
+  rolled_back_from stripe_account? @relation(name: "recipient_rolled_back_from_to_account", fields: [rolled_back_from_id], references: [id])
+  type String
+}
+
 model stripe_reporting_report_run {
   created BigInt
   error String?
@@ -1278,6 +1396,28 @@ model stripe_review {
   session Json?
 }
 
+model stripe_setup_attempt {
+  application_id String?
+  application stripe_application? @relation(name: "setup_attempt_application_to_application", fields: [application_id], references: [id])
+  attach_to_self Boolean?
+  created BigInt
+  customer_id String?
+  customer stripe_customer? @relation(name: "setup_attempt_customer_to_customer", fields: [customer_id], references: [id])
+  flow_directions Json?
+  id String @id
+  livemode Boolean
+  object String
+  on_behalf_of_id String?
+  on_behalf_of stripe_account? @relation(name: "setup_attempt_on_behalf_of_to_account", fields: [on_behalf_of_id], references: [id])
+  payment_method_id String?
+  payment_method stripe_payment_method? @relation(name: "setup_attempt_payment_method_to_payment_method", fields: [payment_method_id], references: [id])
+  setup_error Json?
+  setup_intent_id String?
+  setup_intent stripe_setup_intent? @relation(name: "setup_attempt_setup_intent_to_setup_intent", fields: [setup_intent_id], references: [id])
+  status String
+  usage String
+}
+
 model stripe_setup_intent {
   application_id String?
   application stripe_application? @relation(name: "setup_intent_application_to_application", fields: [application_id], references: [id])
@@ -1292,6 +1432,7 @@ model stripe_setup_intent {
   id String @id
   last_setup_error Json?
   latest_attempt_id String?
+  latest_attempt stripe_setup_attempt? @relation(name: "setup_intent_latest_attempt_to_setup_attempt", fields: [latest_attempt_id], references: [id])
   livemode Boolean
   mandate_id String?
   mandate stripe_mandate? @relation(name: "setup_intent_mandate_to_mandate", fields: [mandate_id], references: [id])
@@ -1336,6 +1477,23 @@ model stripe_scheduled_query_run {
   sql String
   status String
   title String
+}
+
+model stripe_sku {
+  active Boolean
+  attributes Json
+  created BigInt
+  currency String
+  id String @id
+  image String?
+  livemode Boolean
+  metadata Json
+  object String
+  package_dimensions Json?
+  price BigInt
+  product_id String?
+  product stripe_product? @relation(name: "sku_product_to_product", fields: [product_id], references: [id])
+  updated BigInt
 }
 
 model stripe_source {
@@ -1390,6 +1548,15 @@ model stripe_subscription_item {
   tax_rates Json?
 }
 
+model stripe_usage_record_summary {
+  id String @id
+  invoice String?
+  livemode Boolean
+  object String
+  subscription_item String
+  total_usage BigInt
+}
+
 model stripe_subscription_schedule {
   application_id String?
   application stripe_application? @relation(name: "subscription_schedule_application_to_application", fields: [application_id], references: [id])
@@ -1434,6 +1601,38 @@ model stripe_tax_rate {
   percentage Decimal
   state String?
   tax_type String?
+}
+
+model stripe_terminal_configuration {
+  id String @id
+  is_account_default Boolean?
+  livemode Boolean
+  object String
+}
+
+model stripe_terminal_location {
+  configuration_overrides String?
+  display_name String
+  id String @id
+  livemode Boolean
+  metadata Json
+  object String
+}
+
+model stripe_terminal_reader {
+  action Json?
+  device_sw_version String?
+  device_type String
+  id String @id
+  ip_address String?
+  label String
+  livemode Boolean
+  location_id String?
+  location stripe_terminal_location? @relation(name: "terminal_reader_location_to_terminal_location", fields: [location_id], references: [id])
+  metadata Json
+  object String
+  serial_number String
+  status String?
 }
 
 model stripe_token {

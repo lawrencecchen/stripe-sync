@@ -59,10 +59,11 @@ function getSchemaRefs() {
     if (!content.schema) {
       continue;
     }
-    const ref = content.schema["$ref"];
-    if (!ref) {
-      continue;
-    }
+    const ref = dfsKey(content.schema, "$ref");
+    // const ref = content.schema["$ref"];
+    // if (!ref) {
+    //   continue;
+    // }
     if (refs.has(ref)) {
       continue;
     }
@@ -78,8 +79,8 @@ function getSchemaRefs() {
 }
 
 export const schemaRefs = getSchemaRefs();
-// console.log(JSON.stringify([...schemaRefs], null, 4));
-// console.log(schemaRefs.size);
+console.log(JSON.stringify([...schemaRefs], null, 4));
+console.log(schemaRefs.size);
 
 export const webhookEventTypes2 = stripeSpec.paths[
   "/v1/webhook_endpoints"

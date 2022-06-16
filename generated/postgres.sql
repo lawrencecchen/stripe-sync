@@ -70,6 +70,26 @@ create table "stripe"."capability" (
   "status" text NOT NULL
 );
 
+create table "stripe"."bank_account" (
+  "account_id" text,
+  "account_holder_name" text,
+  "account_holder_type" text,
+  "account_type" text,
+  "available_payout_methods" jsonb,
+  "bank_name" text,
+  "country" text NOT NULL,
+  "currency" text NOT NULL,
+  "customer_id" text,
+  "default_for_currency" boolean,
+  "fingerprint" text,
+  "id" text primary key,
+  "last4" text NOT NULL,
+  "metadata" jsonb,
+  "object" text NOT NULL,
+  "routing_number" text,
+  "status" text NOT NULL
+);
+
 create table "stripe"."person" (
   "account" text NOT NULL,
   "address_kana" jsonb,
@@ -106,17 +126,6 @@ create table "stripe"."apple_pay_domain" (
   "object" text NOT NULL
 );
 
-create table "stripe"."fee_refund" (
-  "amount" bigint NOT NULL,
-  "balance_transaction_id" text,
-  "created" bigint NOT NULL,
-  "currency" text NOT NULL,
-  "fee_id" text,
-  "id" text primary key,
-  "metadata" jsonb,
-  "object" text NOT NULL
-);
-
 create table "stripe"."application_fee" (
   "account_id" text,
   "amount" bigint NOT NULL,
@@ -132,6 +141,17 @@ create table "stripe"."application_fee" (
   "originating_transaction_id" text,
   "refunded" boolean NOT NULL,
   "refunds" jsonb NOT NULL
+);
+
+create table "stripe"."fee_refund" (
+  "amount" bigint NOT NULL,
+  "balance_transaction_id" text,
+  "created" bigint NOT NULL,
+  "currency" text NOT NULL,
+  "fee_id" text,
+  "id" text primary key,
+  "metadata" jsonb,
+  "object" text NOT NULL
 );
 
 create table "stripe"."apps_secret" (
@@ -207,6 +227,16 @@ create table "stripe"."bitcoin_receiver" (
   "transactions" jsonb,
   "uncaptured_funds" boolean NOT NULL,
   "used_for_payment" boolean
+);
+
+create table "stripe"."bitcoin_transaction" (
+  "amount" bigint NOT NULL,
+  "bitcoin_amount" bigint NOT NULL,
+  "created" bigint NOT NULL,
+  "currency" text NOT NULL,
+  "id" text primary key,
+  "object" text NOT NULL,
+  "receiver" text NOT NULL
 );
 
 create table "stripe"."charge" (
@@ -334,6 +364,22 @@ create table "stripe"."checkout_session" (
   "url" text
 );
 
+create table "stripe"."item" (
+  "amount_discount" bigint,
+  "amount_subtotal" bigint NOT NULL,
+  "amount_tax" bigint,
+  "amount_total" bigint NOT NULL,
+  "currency" text NOT NULL,
+  "description" text NOT NULL,
+  "discounts" jsonb,
+  "id" text primary key,
+  "object" text NOT NULL,
+  "price" jsonb,
+  "product_id" text,
+  "quantity" bigint,
+  "taxes" jsonb
+);
+
 create table "stripe"."country_spec" (
   "default_currency" text NOT NULL,
   "id" text primary key,
@@ -390,6 +436,23 @@ create table "stripe"."credit_note" (
   "voided_at" bigint
 );
 
+create table "stripe"."credit_note_line_item" (
+  "amount" bigint NOT NULL,
+  "description" text,
+  "discount_amount" bigint NOT NULL,
+  "discount_amounts" jsonb NOT NULL,
+  "id" text primary key,
+  "invoice_line_item" text,
+  "livemode" boolean NOT NULL,
+  "object" text NOT NULL,
+  "quantity" bigint,
+  "tax_amounts" jsonb NOT NULL,
+  "tax_rates" jsonb NOT NULL,
+  "type" text NOT NULL,
+  "unit_amount" bigint,
+  "unit_amount_decimal" text
+);
+
 create table "stripe"."customer_balance_transaction" (
   "amount" bigint NOT NULL,
   "created" bigint NOT NULL,
@@ -404,26 +467,6 @@ create table "stripe"."customer_balance_transaction" (
   "metadata" jsonb,
   "object" text NOT NULL,
   "type" text NOT NULL
-);
-
-create table "stripe"."bank_account" (
-  "account_id" text,
-  "account_holder_name" text,
-  "account_holder_type" text,
-  "account_type" text,
-  "available_payout_methods" jsonb,
-  "bank_name" text,
-  "country" text NOT NULL,
-  "currency" text NOT NULL,
-  "customer_id" text,
-  "default_for_currency" boolean,
-  "fingerprint" text,
-  "id" text primary key,
-  "last4" text NOT NULL,
-  "metadata" jsonb,
-  "object" text NOT NULL,
-  "routing_number" text,
-  "status" text NOT NULL
 );
 
 create table "stripe"."card" (
@@ -486,6 +529,21 @@ create table "stripe"."payment_method" (
   "metadata" jsonb,
   "object" text NOT NULL,
   "type" text NOT NULL
+);
+
+create table "stripe"."alipay_account" (
+  "created" bigint NOT NULL,
+  "customer_id" text,
+  "fingerprint" text NOT NULL,
+  "id" text primary key,
+  "livemode" boolean NOT NULL,
+  "metadata" jsonb,
+  "object" text NOT NULL,
+  "payment_amount" bigint,
+  "payment_currency" text,
+  "reusable" boolean NOT NULL,
+  "used" boolean NOT NULL,
+  "username" text NOT NULL
 );
 
 create table "stripe"."subscription" (
@@ -602,6 +660,17 @@ create table "stripe"."financial_connections_account" (
   "status" text NOT NULL,
   "subcategory" text NOT NULL,
   "supported_payment_method_types" jsonb NOT NULL
+);
+
+create table "stripe"."financial_connections_account_owner" (
+  "email" text,
+  "id" text primary key,
+  "name" text NOT NULL,
+  "object" text NOT NULL,
+  "ownership" text NOT NULL,
+  "phone" text,
+  "raw_address" text,
+  "refreshed_at" bigint
 );
 
 create table "stripe"."financial_connections_session" (
@@ -730,6 +799,29 @@ create table "stripe"."invoice" (
   "total_tax_amounts" jsonb NOT NULL,
   "transfer_data" jsonb,
   "webhooks_delivered_at" bigint
+);
+
+create table "stripe"."line_item" (
+  "amount" bigint NOT NULL,
+  "currency" text NOT NULL,
+  "description" text,
+  "discount_amounts" jsonb,
+  "discountable" boolean NOT NULL,
+  "discounts" jsonb,
+  "id" text primary key,
+  "invoice_item" text,
+  "livemode" boolean NOT NULL,
+  "metadata" jsonb NOT NULL,
+  "object" text NOT NULL,
+  "price" jsonb,
+  "proration" boolean NOT NULL,
+  "proration_details" jsonb,
+  "quantity" bigint,
+  "subscription" text,
+  "subscription_item" text,
+  "tax_amounts" jsonb,
+  "tax_rates" jsonb,
+  "type" text NOT NULL
 );
 
 create table "stripe"."issuer_fraud_record" (
@@ -1128,6 +1220,23 @@ create table "stripe"."radar_value_list" (
   "object" text NOT NULL
 );
 
+create table "stripe"."recipient" (
+  "active_account" jsonb,
+  "cards" jsonb,
+  "created" bigint NOT NULL,
+  "default_card_id" text,
+  "description" text,
+  "email" text,
+  "id" text primary key,
+  "livemode" boolean NOT NULL,
+  "metadata" jsonb NOT NULL,
+  "migrated_to_id" text,
+  "name" text,
+  "object" text NOT NULL,
+  "rolled_back_from_id" text,
+  "type" text NOT NULL
+);
+
 create table "stripe"."reporting_report_run" (
   "created" bigint NOT NULL,
   "error" text,
@@ -1167,6 +1276,23 @@ create table "stripe"."review" (
   "payment_intent_id" text,
   "reason" text NOT NULL,
   "session" jsonb
+);
+
+create table "stripe"."setup_attempt" (
+  "application_id" text,
+  "attach_to_self" boolean,
+  "created" bigint NOT NULL,
+  "customer_id" text,
+  "flow_directions" jsonb,
+  "id" text primary key,
+  "livemode" boolean NOT NULL,
+  "object" text NOT NULL,
+  "on_behalf_of_id" text,
+  "payment_method_id" text,
+  "setup_error" jsonb,
+  "setup_intent_id" text,
+  "status" text NOT NULL,
+  "usage" text NOT NULL
 );
 
 create table "stripe"."setup_intent" (
@@ -1222,6 +1348,22 @@ create table "stripe"."scheduled_query_run" (
   "title" text NOT NULL
 );
 
+create table "stripe"."sku" (
+  "active" boolean NOT NULL,
+  "attributes" jsonb NOT NULL,
+  "created" bigint NOT NULL,
+  "currency" text NOT NULL,
+  "id" text primary key,
+  "image" text,
+  "livemode" boolean NOT NULL,
+  "metadata" jsonb NOT NULL,
+  "object" text NOT NULL,
+  "package_dimensions" jsonb,
+  "price" bigint NOT NULL,
+  "product_id" text,
+  "updated" bigint NOT NULL
+);
+
 create table "stripe"."source" (
   "amount" bigint,
   "client_secret" text NOT NULL,
@@ -1274,6 +1416,15 @@ create table "stripe"."subscription_item" (
   "tax_rates" jsonb
 );
 
+create table "stripe"."usage_record_summary" (
+  "id" text primary key,
+  "invoice" text,
+  "livemode" boolean NOT NULL,
+  "object" text NOT NULL,
+  "subscription_item" text NOT NULL,
+  "total_usage" bigint NOT NULL
+);
+
 create table "stripe"."subscription_schedule" (
   "application_id" text,
   "canceled_at" bigint,
@@ -1315,6 +1466,37 @@ create table "stripe"."tax_rate" (
   "percentage" decimal NOT NULL,
   "state" text,
   "tax_type" text
+);
+
+create table "stripe"."terminal_configuration" (
+  "id" text primary key,
+  "is_account_default" boolean,
+  "livemode" boolean NOT NULL,
+  "object" text NOT NULL
+);
+
+create table "stripe"."terminal_location" (
+  "configuration_overrides" text,
+  "display_name" text NOT NULL,
+  "id" text primary key,
+  "livemode" boolean NOT NULL,
+  "metadata" jsonb NOT NULL,
+  "object" text NOT NULL
+);
+
+create table "stripe"."terminal_reader" (
+  "action" jsonb,
+  "device_sw_version" text,
+  "device_type" text NOT NULL,
+  "id" text primary key,
+  "ip_address" text,
+  "label" text NOT NULL,
+  "livemode" boolean NOT NULL,
+  "location_id" text,
+  "metadata" jsonb NOT NULL,
+  "object" text NOT NULL,
+  "serial_number" text NOT NULL,
+  "status" text
 );
 
 create table "stripe"."token" (
