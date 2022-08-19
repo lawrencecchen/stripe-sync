@@ -79,3 +79,9 @@ This project is inspired by all of the projects listed below.
 - [ ] remix adapter
 - [ ] cloudflare adapter
 - [ ] add tests
+
+## License
+
+[MIT](https://github.com/lawrencecchen/stripe-sync/blob/main/LICENSE)
+
+Copyright (c) 2022-present, Lawrence Chen
