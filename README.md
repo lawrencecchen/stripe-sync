@@ -39,6 +39,8 @@ Supabase-js cannot do cross schema joins. This may change, but in the meantime y
 
 ## Adapters
 
+https://github.com/hattipjs/hattip
+
 - ✅ Supabase Edge Functions
 - ✅ Deno (including Deno Deploy)
 - ✅ Node.js
