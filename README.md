@@ -6,6 +6,8 @@
 grant usage on schema stripe to service_role;
 ```
 
+- for now, stripe-sync only works on the 2022-08-01 api version. 
+
 ## Adapters
 
 - ✅ Supabase Edge Functions

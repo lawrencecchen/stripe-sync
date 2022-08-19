@@ -4,19 +4,41 @@
 
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@9.6.0?target=deno&no-check";
-import {createDenoHandler, } from "https://esm.sh/stripe-sync@0.0.1";
+import {
+  createDenoHandler,
+  createSupabaseAdapter,
+} from "https://esm.sh/stripe-sync@0.0.2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.0.0-rc.3";
+// import { serve } from "https://esm.sh/@hattip/adapter-deno";
 
 const stripe = Stripe(Deno.env.get("STRIPE_API_KEY"), {
-  // This is needed to use the Fetch API rather than relying on the Node http
-  // package.
   httpClient: Stripe.createFetchHttpClient(),
 });
-// This is needed in order to use the Web Crypto API in Deno.
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 
-console.log("Hello from Functions!");
+export const supabaseClient = createClient(
+  // Supabase API URL - env var exported by default when deployed.
+  Deno.env.get("SUPABASE_URL") ?? "",
+  // Supabase API ANON KEY - env var exported by default when deployed.
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
+);
 
-serve(createDenoHandler({databaseAdapter: }));
+console.log("Hello from Functions!");
+console.log("secrets:");
+console.log(Deno.env.get("STRIPE_ENDPOINT_SECRET"));
+console.log(Deno.env.get("STRIPE_SK"));
+
+const handler = createDenoHandler({
+  databaseAdapter: createSupabaseAdapter({
+    supabase: supabaseClient,
+  }),
+  stripe,
+  cryptoProvider,
+  stripeEndpointSecret: Deno.env.get("STRIPE_ENDPOINT_SECRET") ?? "",
+  stripeSecretKey: Deno.env.get("STRIPE_SK") ?? "",
+});
+
+serve(handler as any);
 
 // To invoke:
 // curl -i --location --request POST 'http://localhost:54321/functions/v1/' \

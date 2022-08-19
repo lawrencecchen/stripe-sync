@@ -16,6 +16,7 @@ importers:
       '@types/fs-extra': ^9.0.13
       '@types/node': ^18.7.6
       '@types/prettier': ^2.7.0
+      dotenv: ^16.0.1
       fs-extra: ^10.1.0
       prettier: ^2.7.1
       stripe: ^10.2.0
@@ -38,6 +39,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/node': 18.7.6
       '@types/prettier': 2.7.0
+      dotenv: 16.0.1
       fs-extra: 10.1.0
       prettier: 2.7.1
       tsup: 6.2.2_typescript@4.7.4
@@ -415,6 +417,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-type: 4.0.0
+    dev: true
+
+  /dotenv/16.0.1:
+    resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /es5-ext/0.10.62:

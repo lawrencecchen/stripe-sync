@@ -58,7 +58,7 @@ export function createHandler(opts: HandlerOptions) {
         // todo: idk if this is the best way to do it. https://github.com/nodejs/undici/issues/1499
         const cloned = request.clone();
         const body = await cloned.text();
-        event = opts.stripe.webhooks.constructEvent(
+        event = await opts.stripe.webhooks.constructEventAsync(
           body,
           signature,
           opts.stripeEndpointSecret,

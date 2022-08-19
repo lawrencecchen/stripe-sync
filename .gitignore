@@ -3,3 +3,6 @@ dist
 build
 
 .env
+# Supabase
+**/supabase/.branches
+**/supabase/.temp

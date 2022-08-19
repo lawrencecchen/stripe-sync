@@ -4,6 +4,8 @@ import Stripe from "stripe";
 import { createSupabaseAdapter } from "./adapters/supabase";
 import { createHandler } from "./handler";
 import z from "zod";
+import dotenv from "dotenv";
+dotenv.config();
 
 const port = 5678;
 
