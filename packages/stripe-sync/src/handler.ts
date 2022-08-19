@@ -77,14 +77,17 @@ export function createHandler(opts: HandlerOptions) {
       try {
         await handleEvent(event, opts);
       } catch (e) {
-        logger.error(`Error handling ${event.type}`, e);
+        logger.error(
+          `Error handling ${event.type}`,
+          JSON.stringify(e, null, 2)
+        );
         throw new Response("Error handling event", {
           status: 500,
         });
       }
       return new Response("ok");
     } catch (e) {
-      logger.error(e);
+      logger.error(JSON.stringify(e, null, 2));
       throw new Response("server error", { status: 500 });
     }
   };

@@ -7,7 +7,7 @@ import Stripe from "https://esm.sh/stripe@9.6.0?target=deno&no-check";
 import {
   createDenoHandler,
   createSupabaseAdapter,
-} from "https://esm.sh/stripe-sync@0.0.2";
+} from "https://esm.sh/stripe-sync@0.0.4";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.0.0-rc.3";
 // import { serve } from "https://esm.sh/@hattip/adapter-deno";
 
