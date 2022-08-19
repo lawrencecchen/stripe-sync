@@ -4,6 +4,7 @@
 
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@9.6.0?target=deno&no-check";
+import {createDenoHandler, } from "https://esm.sh/stripe-sync@0.0.1";
 
 const stripe = Stripe(Deno.env.get("STRIPE_API_KEY"), {
   // This is needed to use the Fetch API rather than relying on the Node http
@@ -15,16 +16,7 @@ const cryptoProvider = Stripe.createSubtleCryptoProvider();
 
 console.log("Hello from Functions!");
 
-serve(async (req) => {
-  const { name } = await req.json();
-  const data = {
-    message: `Hello ${name}!`,
-  };
-
-  return new Response(JSON.stringify(data), {
-    headers: { "Content-Type": "application/json" },
-  });
-});
+serve(createDenoHandler({databaseAdapter: }));
 
 // To invoke:
 // curl -i --location --request POST 'http://localhost:54321/functions/v1/' \
