@@ -6,6 +6,7 @@ Sync Stripe Webhook events directly into your database.
 
 ### Supabase
 
+Synced Webhook events may contain sensitive information. Make sure to access this data using a service role Supabase client in a protected server environment.
 
 #### Add `stripe` schema:
 
