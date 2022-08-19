@@ -1,3 +1,20 @@
+// class XodInterface {
+//   private _type: string;
+//   private _name: string;
+//   private _value: string;
+
+//   constructor(name: string, value: any) {
+//     this._type = "interface";
+//     this._name = name;
+//     this._value = value;
+//   }
+
+//   add(name: string, value: string) {
+//     return new XodInterface(name, value);
+//   }
+// }
+import prettier from "prettier";
+
 function init() {
   function _literal(input: string) {
     return {
@@ -56,9 +73,10 @@ function init() {
   }
 
   function generateValue(input: any) {
-    switch (input.type) {
+    const { type, value, name } = input;
+    switch (type) {
       case "literal": {
-        return `"${input.value}"`;
+        return `"${value}"`;
       }
       case "string": {
         return `string`;
@@ -67,42 +85,42 @@ function init() {
         return `number`;
       }
       case "union": {
-        return `(${input.value.map((x) => generateValue(x)).join(" | ")})`;
+        return `(${value.map((x) => generateValue(x)).join(" | ")})`;
       }
       case "array": {
-        return `[${input.value.map((x) => generateValue(x)).join(", ")}]`;
+        return `[${value.map((x) => generateValue(x)).join(", ")}]`;
       }
       case "object": {
-        return `{${Object.keys(input.value)
-          .map((key) => `${key}: ${generateValue(input.value[key])};`)
+        return `{${Object.keys(value)
+          .map((key) => `${key}: ${generateValue(value[key])};`)
           .join(" ")}}`;
       }
       case "type": {
-        return `${input.name}`;
+        return `${name}`;
       }
       case "interface": {
-        return `${input.name}`;
+        return `${name}`;
       }
       default: {
-        throw new Error(`Unknown type: ${input.type}`);
+        throw new Error(`Unknown type: ${type}`);
       }
     }
   }
 
   function generate(input: any) {
     let out = "";
-    // console.log(input);
-    switch (input.type) {
+    const { type, value, name } = input;
+    switch (type) {
       case "type": {
-        out += `type ${input.name} = ${generateValue(input.value)};`;
+        out += `type ${name} = ${generateValue(value)};`;
         break;
       }
       case "interface": {
-        out += `interface ${input.name} ${generateValue(input.value)};`;
+        out += `interface ${name} ${generateValue(value)};`;
         break;
       }
       default: {
-        throw new Error(`Invalid type: ${input.type}`);
+        throw new Error(`Invalid type: ${type}`);
       }
     }
     return out;
@@ -136,6 +154,18 @@ export const x = init();
 
 const role = x.type("Role", x.union([x.literal("admin"), x.literal("user")]));
 const user = x.interface("User", x.object({ name: x.string(), role }));
+const user2 = x.type(
+  "UserButAType",
+  x.object({
+    name: x.string(),
+    role,
+    id: x.number(),
+    age: x.number(),
+    nick: x.string(),
+  })
+);
 
-const out = x.generateMany([role, user]);
+const out = prettier.format(x.generateMany([role, user, user2]), {
+  parser: "typescript",
+});
 console.log(out);

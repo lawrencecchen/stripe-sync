@@ -1,0 +1,55 @@
+{
+  "name": "stripe-sync",
+  "version": "0.0.1",
+  "description": "sync stripe data to your SQL database",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist",
+    "/src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrencecchen/stripe-sync.git",
+    "directory": "packages/stripe-sync"
+  },
+  "homepage": "https://stipe-sync.vercel.app",
+  "scripts": {
+    "dev": "tsx watch src/entry-node",
+    "dev:parse": "tsx watch src/openapi-parser",
+    "dev:xod": "tsx watch src/xod",
+    "build": "tsup src/index.ts --format esm,cjs,iife --dts"
+  },
+  "keywords": [
+    "stripe",
+    "postgres",
+    "mysql",
+    "supabase",
+    "deno",
+    "bun"
+  ],
+  "author": "Lawrence Chen",
+  "license": "MIT",
+  "devDependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.7.6",
+    "@types/prettier": "^2.7.0",
+    "fs-extra": "^10.1.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.2.2",
+    "tsx": "^3.8.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@hattip/adapter-deno": "^0.0.17",
+    "@hattip/adapter-node": "^0.0.17",
+    "@hattip/core": "^0.0.17",
+    "@hattip/response": "^0.0.17",
+    "@supabase/supabase-js": "rc",
+    "stripe": "^10.2.0",
+    "tiny-invariant": "^1.2.0",
+    "zod": "^3.18.0"
+  }
+}

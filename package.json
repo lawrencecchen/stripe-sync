@@ -1,26 +1,20 @@
 {
-  "name": "stripe-sync",
+  "name": "stripe-sync-root",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "examples/*"
+    ]
+  },
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/entry-node",
-    "dev:parse": "tsx watch src/openapi-parser",
-    "dev:xod": "tsx watch src/xod",
-    "build": "tsup src/index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Lawrence Chen",
-  "license": "MIT",
-  "devDependencies": {
-    "@apidevtools/swagger-parser": "^10.1.0",
-    "@types/node": "^18.7.6",
-    "tsup": "^6.2.2",
-    "tsx": "^3.8.2"
-  },
-  "dependencies": {
-    "@hattip/adapter-node": "^0.0.17",
-    "@hattip/core": "^0.0.17",
-    "tiny-invariant": "^1.2.0"
-  }
+  "license": "MIT"
 }
