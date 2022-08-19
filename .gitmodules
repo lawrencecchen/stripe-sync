@@ -1,3 +1,6 @@
 [submodule "stripe-openapi"]
 	path = stripe-openapi
 	url = https://github.com/stripe/openapi.git
+[submodule "packages/stripe-sync/stripe-openapi"]
+	path = packages/stripe-sync/stripe-openapi
+	url = https://github.com/stripe/openapi.git
