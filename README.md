@@ -76,3 +76,4 @@ This project is inspired by all of the projects listed below.
 - [ ] next.js adapter
 - [ ] remix adapter
 - [ ] cloudflare adapter
+- [ ] add tests
