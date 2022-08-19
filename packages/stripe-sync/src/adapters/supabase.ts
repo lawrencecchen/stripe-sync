@@ -17,6 +17,5 @@ export function createSupabaseAdapter(opts: {
       }
     },
     getFromClause: ({ schema, table }) => `${table}`,
-    // getFromClause: ({ schema, table }) => `${schema}.${table}`,
   });
 }
