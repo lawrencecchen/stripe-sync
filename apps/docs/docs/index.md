@@ -1389,15 +1389,6 @@ Add the `stripe` schema to search path and make sure that Supabase/Postgrest wil
 
 ![Supabase schema settings](./supabase-schema-settings.png)
 
-## Create `.env` file
-
-`./supabase/.env`
-
-```
-STRIPE_SK=sk_...
-STRIPE_ENDPOINT_SECRET=whsec_...
-```
-
 ## Add Supabase Edge Functions handler
 
 Init Supabase
@@ -1452,6 +1443,15 @@ const handler = createDenoHandler({
 });
 
 serve(handler);
+```
+
+## Create `.env` file
+
+`./supabase/.env`
+
+```
+STRIPE_SK=sk_...
+STRIPE_ENDPOINT_SECRET=whsec_...
 ```
 
 ## Deploy edge functions
