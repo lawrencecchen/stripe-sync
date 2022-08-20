@@ -10,8 +10,6 @@ By default, we add the tables under the `stripe` schema.
 
 ```sql
 CREATE SCHEMA stripe;
-grant usage on schema stripe to service_role;
-grant all privileges on all tables in schema stripe to service_role;
 CREATE TABLE stripe.application (
   "id" text not null,
   "name" text,
@@ -1376,14 +1374,14 @@ CREATE TABLE stripe.received_debit (
 
 - [postgres.sql](https://github.com/lawrencecchen/stripe-sync/blob/main/packages/stripe-sync/generated/postgres.sql)
 
-<!-- ## Update database permissions
+## Update database permissions
 
 Make sure to only use the `service_role` Supabase client in a protected server environment to access Stripe data.
 
 ```sql
 grant usage on schema stripe to service_role;
 grant all privileges on all tables in schema stripe to service_role;
-``` -->
+```
 
 ## Update Supabase API options
 
