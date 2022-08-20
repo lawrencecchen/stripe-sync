@@ -1394,6 +1394,20 @@ STRIPE_ENDPOINT_SECRET=whsec_...
 
 ## Add Supabase Edge Functions handler
 
+Init Supabase
+
+```bash
+supabase init
+```
+
+Create Supabase function handler
+
+```bash
+supabase functions new stripe
+```
+
+`./supabase/functions/stripe/index.ts`
+
 ```ts
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@9.6.0?target=deno&no-check";

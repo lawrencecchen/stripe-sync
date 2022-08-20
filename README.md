@@ -4,6 +4,10 @@ Sync Stripe Webhook events directly into your database.
 
 ## Setup
 
+Detailed setup instructions can be found here:
+
+https://stripe-sync.vercel.app/
+
 ### Supabase
 
 Synced Webhook events may contain sensitive information. Make sure to access this data using a service role Supabase client in a protected server environment.
