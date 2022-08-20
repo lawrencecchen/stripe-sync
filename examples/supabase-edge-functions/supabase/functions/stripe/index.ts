@@ -7,7 +7,7 @@ import Stripe from "https://esm.sh/stripe@9.6.0?target=deno&no-check";
 import {
   createDenoHandler,
   createSupabaseAdapter,
-} from "https://esm.sh/stripe-sync@0.0.5";
+} from "https://esm.sh/stripe-sync@0.0.6";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.0.0-rc.3";
 
 const stripe = Stripe(Deno.env.get("STRIPE_API_KEY"), {
@@ -17,9 +17,7 @@ const stripe = Stripe(Deno.env.get("STRIPE_API_KEY"), {
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 
 export const supabaseClient = createClient(
-  // Supabase API URL - env var exported by default when deployed.
   Deno.env.get("SUPABASE_URL") ?? "",
-  // Supabase API ANON KEY - env var exported by default when deployed.
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
   {
     db: {
@@ -38,4 +36,4 @@ const handler = createDenoHandler({
   stripeSecretKey: Deno.env.get("STRIPE_SK") ?? "",
 });
 
-serve(handler as any);
+serve(handler);
