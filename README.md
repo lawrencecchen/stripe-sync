@@ -2,6 +2,8 @@
 
 Sync Stripe webhook events directly into your database.
 
+Note: this is experimental. Stuff might be broken.
+
 ## Setup
 
 Detailed setup instructions can be found here:
