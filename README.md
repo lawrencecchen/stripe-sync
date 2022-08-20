@@ -81,6 +81,7 @@ This project is inspired by all of the projects listed below.
 
 ## Todos
 
+- [ ] make ids primary keys
 - [ ] automatically register webhooks with stripe
 - [ ] next.js example
 - [ ] remix example
