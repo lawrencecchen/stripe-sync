@@ -1,6 +1,6 @@
 # Stripe Sync
 
-Sync Stripe Webhook events directly into your database.
+Sync Stripe webhook events directly into your database.
 
 ## Setup
 
