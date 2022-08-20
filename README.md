@@ -76,6 +76,7 @@ This project is inspired by all of the projects listed below.
 ## Todos
 
 - [ ] automatically register webhooks with stripe
+- [ ] next.js example
 - [ ] `stripe_` prefix ddl option
 - [ ] webhook callback functions on for custom logic
 - [ ] implement all stripe best practices
