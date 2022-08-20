@@ -9,221 +9,221 @@ maybe refetch event?
 
 (They're all supported)
 
-- [x] `account.application.authorized` 🟢
-- [x] `account.application.deauthorized` 🟢
-- [x] `account.external_account.created` 🟢
-- [x] `account.external_account.deleted` 🟢
-- [x] `account.external_account.updated` 🟢
-- [x] `account.updated` 🟢
-- [x] `application_fee.created` 🟢
-- [x] `application_fee.refund.updated` 🟢
-- [x] `application_fee.refunded` 🟢
-- [x] `balance.available` 🟢
-- [x] `billing_portal.configuration.created` 🟢
-- [x] `billing_portal.configuration.updated` 🟢
-- [x] `billing_portal.session.created` 🟢
-- [x] `capability.updated` 🟢
-- [x] `cash_balance.funds_available` 🟢
-- [x] `charge.captured` 🟢
-- [x] `charge.dispute.closed` 🟢
-- [x] `charge.dispute.created` 🟢
-- [x] `charge.dispute.funds_reinstated` 🟢
-- [x] `charge.dispute.funds_withdrawn` 🟢
-- [x] `charge.dispute.updated` 🟢
-- [x] `charge.expired` 🟢
-- [x] `charge.failed` 🟢
-- [x] `charge.pending` 🟢
-- [x] `charge.refund.updated` 🟢
-- [x] `charge.refunded` 🟢
-- [x] `charge.succeeded` 🟢
-- [x] `charge.updated` 🟢
-- [x] `checkout.session.async_payment_failed` 🟢
-- [x] `checkout.session.async_payment_succeeded` 🟢
-- [x] `checkout.session.completed` 🟢
-- [x] `checkout.session.expired` 🟢
-- [x] `coupon.created` 🟢
-- [x] `coupon.deleted` 🟢
-- [x] `coupon.updated` 🟢
-- [x] `credit_note.created` 🟢
-- [x] `credit_note.updated` 🟢
-- [x] `credit_note.voided` 🟢
-- [x] `customer.created` 🟢
-- [x] `customer.deleted` 🟢
-- [x] `customer.discount.created` 🟢
-- [x] `customer.discount.deleted` 🟢
-- [x] `customer.discount.updated` 🟢
-- [x] `customer.source.created` 🟢
-- [x] `customer.source.deleted` 🟢
-- [x] `customer.source.expiring` 🟢
-- [x] `customer.source.updated` 🟢
-- [x] `customer.subscription.created` 🟢
-- [x] `customer.subscription.deleted` 🟢
-- [x] `customer.subscription.pending_update_applied` 🟢
-- [x] `customer.subscription.pending_update_expired` 🟢
-- [x] `customer.subscription.trial_will_end` 🟢
-- [x] `customer.subscription.updated` 🟢
-- [x] `customer.tax_id.created` 🟢
-- [x] `customer.tax_id.deleted` 🟢
-- [x] `customer.tax_id.updated` 🟢
-- [x] `customer.updated` 🟢
-- [x] `file.created` 🟢
-- [x] `financial_connections.account.created` 🟢
-- [x] `financial_connections.account.deactivated` 🟢
-- [x] `financial_connections.account.disconnected` 🟢
-- [x] `financial_connections.account.reactivated` 🟢
-- [x] `financial_connections.account.refreshed_balance` 🟢
-- [x] `identity.verification_session.canceled` 🟢
-- [x] `identity.verification_session.created` 🟢
-- [x] `identity.verification_session.processing` 🟢
-- [x] `identity.verification_session.redacted` 🟢
-- [x] `identity.verification_session.requires_input` 🟢
-- [x] `identity.verification_session.verified` 🟢
-- [x] `invoice.created` 🟢
-- [x] `invoice.deleted` 🟢
-- [x] `invoice.finalization_failed` 🟢
-- [x] `invoice.finalized` 🟢
-- [x] `invoice.marked_uncollectible` 🟢
-- [x] `invoice.paid` 🟢
-- [x] `invoice.payment_action_required` 🟢
-- [x] `invoice.payment_failed` 🟢
-- [x] `invoice.payment_succeeded` 🟢
-- [x] `invoice.sent` 🟢
-- [x] `invoice.upcoming` 🟢
-- [x] `invoice.updated` 🟢
-- [x] `invoice.voided` 🟢
-- [x] `invoiceitem.created` 🟢
-- [x] `invoiceitem.deleted` 🟢
-- [x] `invoiceitem.updated` 🟢
-- [x] `issuing_authorization.created` 🟢
-- [x] `issuing_authorization.request` 🟢
-- [x] `issuing_authorization.updated` 🟢
-- [x] `issuing_card.created` 🟢
-- [x] `issuing_card.updated` 🟢
-- [x] `issuing_cardholder.created` 🟢
-- [x] `issuing_cardholder.updated` 🟢
-- [x] `issuing_dispute.closed` 🟢
-- [x] `issuing_dispute.created` 🟢
-- [x] `issuing_dispute.funds_reinstated` 🟢
-- [x] `issuing_dispute.submitted` 🟢
-- [x] `issuing_dispute.updated` 🟢
-- [x] `issuing_transaction.created` 🟢
-- [x] `issuing_transaction.updated` 🟢
-- [x] `mandate.updated` 🟢
-- [x] `order.created` 🟢
-- [x] `payment_intent.amount_capturable_updated` 🟢
-- [x] `payment_intent.canceled` 🟢
-- [x] `payment_intent.created` 🟢
-- [x] `payment_intent.partially_funded` 🟢
-- [x] `payment_intent.payment_failed` 🟢
-- [x] `payment_intent.processing` 🟢
-- [x] `payment_intent.requires_action` 🟢
-- [x] `payment_intent.succeeded` 🟢
-- [x] `payment_link.created` 🟢
-- [x] `payment_link.updated` 🟢
-- [x] `payment_method.attached` 🟢
-- [x] `payment_method.automatically_updated` 🟢
-- [x] `payment_method.detached` 🟢
-- [x] `payment_method.updated` 🟢
-- [x] `payout.canceled` 🟢
-- [x] `payout.created` 🟢
-- [x] `payout.failed` 🟢
-- [x] `payout.paid` 🟢
-- [x] `payout.updated` 🟢
-- [x] `person.created` 🟢
-- [x] `person.deleted` 🟢
-- [x] `person.updated` 🟢
-- [x] `plan.created` 🟢
-- [x] `plan.deleted` 🟢
-- [x] `plan.updated` 🟢
-- [x] `price.created` 🟢
-- [x] `price.deleted` 🟢
-- [x] `price.updated` 🟢
-- [x] `product.created` 🟢
-- [x] `product.deleted` 🟢
-- [x] `product.updated` 🟢
-- [x] `promotion_code.created` 🟢
-- [x] `promotion_code.updated` 🟢
-- [x] `quote.accepted` 🟢
-- [x] `quote.canceled` 🟢
-- [x] `quote.created` 🟢
-- [x] `quote.finalized` 🟢
-- [x] `radar.early_fraud_warning.created` 🟢
-- [x] `radar.early_fraud_warning.updated` 🟢
-- [x] `recipient.created` 🟢
-- [x] `recipient.deleted` 🟢
-- [x] `recipient.updated` 🟢
-- [x] `reporting.report_run.failed` 🟢
-- [x] `reporting.report_run.succeeded` 🟢
-- [x] `reporting.report_type.updated` 🟢
-- [x] `review.closed` 🟢
-- [x] `review.opened` 🟢
-- [x] `setup_intent.canceled` 🟢
-- [x] `setup_intent.created` 🟢
-- [x] `setup_intent.requires_action` 🟢
-- [x] `setup_intent.setup_failed` 🟢
-- [x] `setup_intent.succeeded` 🟢
-- [x] `sigma.scheduled_query_run.created` 🟢
-- [x] `sku.created` 🟢
-- [x] `sku.deleted` 🟢
-- [x] `sku.updated` 🟢
-- [x] `source.canceled` 🟢
-- [x] `source.chargeable` 🟢
-- [x] `source.failed` 🟢
-- [x] `source.mandate_notification` 🟢
-- [x] `source.refund_attributes_required` 🟢
-- [x] `source.transaction.created` 🟢
-- [x] `source.transaction.updated` 🟢
-- [x] `subscription_schedule.aborted` 🟢
-- [x] `subscription_schedule.canceled` 🟢
-- [x] `subscription_schedule.completed` 🟢
-- [x] `subscription_schedule.created` 🟢
-- [x] `subscription_schedule.expiring` 🟢
-- [x] `subscription_schedule.released` 🟢
-- [x] `subscription_schedule.updated` 🟢
-- [x] `tax_rate.created` 🟢
-- [x] `tax_rate.updated` 🟢
-- [x] `terminal.reader.action_failed` 🟢
-- [x] `terminal.reader.action_succeeded` 🟢
-- [x] `test_helpers.test_clock.advancing` 🟢
-- [x] `test_helpers.test_clock.created` 🟢
-- [x] `test_helpers.test_clock.deleted` 🟢
-- [x] `test_helpers.test_clock.internal_failure` 🟢
-- [x] `test_helpers.test_clock.ready` 🟢
-- [x] `topup.canceled` 🟢
-- [x] `topup.created` 🟢
-- [x] `topup.failed` 🟢
-- [x] `topup.reversed` 🟢
-- [x] `topup.succeeded` 🟢
-- [x] `transfer.created` 🟢
-- [x] `transfer.reversed` 🟢
-- [x] `transfer.updated` 🟢
-- [x] `treasury.credit_reversal.created` 🟢
-- [x] `treasury.credit_reversal.posted` 🟢
-- [x] `treasury.debit_reversal.completed` 🟢
-- [x] `treasury.debit_reversal.created` 🟢
-- [x] `treasury.debit_reversal.initial_credit_granted` 🟢
-- [x] `treasury.financial_account.closed` 🟢
-- [x] `treasury.financial_account.created` 🟢
-- [x] `treasury.financial_account.features_status_updated` 🟢
-- [x] `treasury.inbound_transfer.canceled` 🟢
-- [x] `treasury.inbound_transfer.created` 🟢
-- [x] `treasury.inbound_transfer.failed` 🟢
-- [x] `treasury.inbound_transfer.succeeded` 🟢
-- [x] `treasury.outbound_payment.canceled` 🟢
-- [x] `treasury.outbound_payment.created` 🟢
-- [x] `treasury.outbound_payment.expected_arrival_date_updated` 🟢
-- [x] `treasury.outbound_payment.failed` 🟢
-- [x] `treasury.outbound_payment.posted` 🟢
-- [x] `treasury.outbound_payment.returned` 🟢
-- [x] `treasury.outbound_transfer.canceled` 🟢
-- [x] `treasury.outbound_transfer.created` 🟢
-- [x] `treasury.outbound_transfer.expected_arrival_date_updated` 🟢
-- [x] `treasury.outbound_transfer.failed` 🟢
-- [x] `treasury.outbound_transfer.posted` 🟢
-- [x] `treasury.outbound_transfer.returned` 🟢
-- [x] `treasury.received_credit.created` 🟢
-- [x] `treasury.received_credit.failed` 🟢
-- [x] `treasury.received_credit.succeeded` 🟢
-- [x] `treasury.received_debit.created` 🟢
+- ✅ `account.application.authorized`
+- ✅ `account.application.deauthorized`
+- ✅ `account.external_account.created`
+- ✅ `account.external_account.deleted`
+- ✅ `account.external_account.updated`
+- ✅ `account.updated`
+- ✅ `application_fee.created`
+- ✅ `application_fee.refund.updated`
+- ✅ `application_fee.refunded`
+- ✅ `balance.available`
+- ✅ `billing_portal.configuration.created`
+- ✅ `billing_portal.configuration.updated`
+- ✅ `billing_portal.session.created`
+- ✅ `capability.updated`
+- ✅ `cash_balance.funds_available`
+- ✅ `charge.captured`
+- ✅ `charge.dispute.closed`
+- ✅ `charge.dispute.created`
+- ✅ `charge.dispute.funds_reinstated`
+- ✅ `charge.dispute.funds_withdrawn`
+- ✅ `charge.dispute.updated`
+- ✅ `charge.expired`
+- ✅ `charge.failed`
+- ✅ `charge.pending`
+- ✅ `charge.refund.updated`
+- ✅ `charge.refunded`
+- ✅ `charge.succeeded`
+- ✅ `charge.updated`
+- ✅ `checkout.session.async_payment_failed`
+- ✅ `checkout.session.async_payment_succeeded`
+- ✅ `checkout.session.completed`
+- ✅ `checkout.session.expired`
+- ✅ `coupon.created`
+- ✅ `coupon.deleted`
+- ✅ `coupon.updated`
+- ✅ `credit_note.created`
+- ✅ `credit_note.updated`
+- ✅ `credit_note.voided`
+- ✅ `customer.created`
+- ✅ `customer.deleted`
+- ✅ `customer.discount.created`
+- ✅ `customer.discount.deleted`
+- ✅ `customer.discount.updated`
+- ✅ `customer.source.created`
+- ✅ `customer.source.deleted`
+- ✅ `customer.source.expiring`
+- ✅ `customer.source.updated`
+- ✅ `customer.subscription.created`
+- ✅ `customer.subscription.deleted`
+- ✅ `customer.subscription.pending_update_applied`
+- ✅ `customer.subscription.pending_update_expired`
+- ✅ `customer.subscription.trial_will_end`
+- ✅ `customer.subscription.updated`
+- ✅ `customer.tax_id.created`
+- ✅ `customer.tax_id.deleted`
+- ✅ `customer.tax_id.updated`
+- ✅ `customer.updated`
+- ✅ `file.created`
+- ✅ `financial_connections.account.created`
+- ✅ `financial_connections.account.deactivated`
+- ✅ `financial_connections.account.disconnected`
+- ✅ `financial_connections.account.reactivated`
+- ✅ `financial_connections.account.refreshed_balance`
+- ✅ `identity.verification_session.canceled`
+- ✅ `identity.verification_session.created`
+- ✅ `identity.verification_session.processing`
+- ✅ `identity.verification_session.redacted`
+- ✅ `identity.verification_session.requires_input`
+- ✅ `identity.verification_session.verified`
+- ✅ `invoice.created`
+- ✅ `invoice.deleted`
+- ✅ `invoice.finalization_failed`
+- ✅ `invoice.finalized`
+- ✅ `invoice.marked_uncollectible`
+- ✅ `invoice.paid`
+- ✅ `invoice.payment_action_required`
+- ✅ `invoice.payment_failed`
+- ✅ `invoice.payment_succeeded`
+- ✅ `invoice.sent`
+- ✅ `invoice.upcoming`
+- ✅ `invoice.updated`
+- ✅ `invoice.voided`
+- ✅ `invoiceitem.created`
+- ✅ `invoiceitem.deleted`
+- ✅ `invoiceitem.updated`
+- ✅ `issuing_authorization.created`
+- ✅ `issuing_authorization.request`
+- ✅ `issuing_authorization.updated`
+- ✅ `issuing_card.created`
+- ✅ `issuing_card.updated`
+- ✅ `issuing_cardholder.created`
+- ✅ `issuing_cardholder.updated`
+- ✅ `issuing_dispute.closed`
+- ✅ `issuing_dispute.created`
+- ✅ `issuing_dispute.funds_reinstated`
+- ✅ `issuing_dispute.submitted`
+- ✅ `issuing_dispute.updated`
+- ✅ `issuing_transaction.created`
+- ✅ `issuing_transaction.updated`
+- ✅ `mandate.updated`
+- ✅ `order.created`
+- ✅ `payment_intent.amount_capturable_updated`
+- ✅ `payment_intent.canceled`
+- ✅ `payment_intent.created`
+- ✅ `payment_intent.partially_funded`
+- ✅ `payment_intent.payment_failed`
+- ✅ `payment_intent.processing`
+- ✅ `payment_intent.requires_action`
+- ✅ `payment_intent.succeeded`
+- ✅ `payment_link.created`
+- ✅ `payment_link.updated`
+- ✅ `payment_method.attached`
+- ✅ `payment_method.automatically_updated`
+- ✅ `payment_method.detached`
+- ✅ `payment_method.updated`
+- ✅ `payout.canceled`
+- ✅ `payout.created`
+- ✅ `payout.failed`
+- ✅ `payout.paid`
+- ✅ `payout.updated`
+- ✅ `person.created`
+- ✅ `person.deleted`
+- ✅ `person.updated`
+- ✅ `plan.created`
+- ✅ `plan.deleted`
+- ✅ `plan.updated`
+- ✅ `price.created`
+- ✅ `price.deleted`
+- ✅ `price.updated`
+- ✅ `product.created`
+- ✅ `product.deleted`
+- ✅ `product.updated`
+- ✅ `promotion_code.created`
+- ✅ `promotion_code.updated`
+- ✅ `quote.accepted`
+- ✅ `quote.canceled`
+- ✅ `quote.created`
+- ✅ `quote.finalized`
+- ✅ `radar.early_fraud_warning.created`
+- ✅ `radar.early_fraud_warning.updated`
+- ✅ `recipient.created`
+- ✅ `recipient.deleted`
+- ✅ `recipient.updated`
+- ✅ `reporting.report_run.failed`
+- ✅ `reporting.report_run.succeeded`
+- ✅ `reporting.report_type.updated`
+- ✅ `review.closed`
+- ✅ `review.opened`
+- ✅ `setup_intent.canceled`
+- ✅ `setup_intent.created`
+- ✅ `setup_intent.requires_action`
+- ✅ `setup_intent.setup_failed`
+- ✅ `setup_intent.succeeded`
+- ✅ `sigma.scheduled_query_run.created`
+- ✅ `sku.created`
+- ✅ `sku.deleted`
+- ✅ `sku.updated`
+- ✅ `source.canceled`
+- ✅ `source.chargeable`
+- ✅ `source.failed`
+- ✅ `source.mandate_notification`
+- ✅ `source.refund_attributes_required`
+- ✅ `source.transaction.created`
+- ✅ `source.transaction.updated`
+- ✅ `subscription_schedule.aborted`
+- ✅ `subscription_schedule.canceled`
+- ✅ `subscription_schedule.completed`
+- ✅ `subscription_schedule.created`
+- ✅ `subscription_schedule.expiring`
+- ✅ `subscription_schedule.released`
+- ✅ `subscription_schedule.updated`
+- ✅ `tax_rate.created`
+- ✅ `tax_rate.updated`
+- ✅ `terminal.reader.action_failed`
+- ✅ `terminal.reader.action_succeeded`
+- ✅ `test_helpers.test_clock.advancing`
+- ✅ `test_helpers.test_clock.created`
+- ✅ `test_helpers.test_clock.deleted`
+- ✅ `test_helpers.test_clock.internal_failure`
+- ✅ `test_helpers.test_clock.ready`
+- ✅ `topup.canceled`
+- ✅ `topup.created`
+- ✅ `topup.failed`
+- ✅ `topup.reversed`
+- ✅ `topup.succeeded`
+- ✅ `transfer.created`
+- ✅ `transfer.reversed`
+- ✅ `transfer.updated`
+- ✅ `treasury.credit_reversal.created`
+- ✅ `treasury.credit_reversal.posted`
+- ✅ `treasury.debit_reversal.completed`
+- ✅ `treasury.debit_reversal.created`
+- ✅ `treasury.debit_reversal.initial_credit_granted`
+- ✅ `treasury.financial_account.closed`
+- ✅ `treasury.financial_account.created`
+- ✅ `treasury.financial_account.features_status_updated`
+- ✅ `treasury.inbound_transfer.canceled`
+- ✅ `treasury.inbound_transfer.created`
+- ✅ `treasury.inbound_transfer.failed`
+- ✅ `treasury.inbound_transfer.succeeded`
+- ✅ `treasury.outbound_payment.canceled`
+- ✅ `treasury.outbound_payment.created`
+- ✅ `treasury.outbound_payment.expected_arrival_date_updated`
+- ✅ `treasury.outbound_payment.failed`
+- ✅ `treasury.outbound_payment.posted`
+- ✅ `treasury.outbound_payment.returned`
+- ✅ `treasury.outbound_transfer.canceled`
+- ✅ `treasury.outbound_transfer.created`
+- ✅ `treasury.outbound_transfer.expected_arrival_date_updated`
+- ✅ `treasury.outbound_transfer.failed`
+- ✅ `treasury.outbound_transfer.posted`
+- ✅ `treasury.outbound_transfer.returned`
+- ✅ `treasury.received_credit.created`
+- ✅ `treasury.received_credit.failed`
+- ✅ `treasury.received_credit.succeeded`
+- ✅ `treasury.received_debit.created`
 
 But are they tested? 🤷‍♂️

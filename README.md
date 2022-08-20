@@ -36,6 +36,8 @@ supabase secrets set --env-file ./supabase/.env
 
 ## Adapters
 
+** Work in progress. Only Deno/Supabase Edge Functions are documented right now **
+
 https://github.com/hattipjs/hattip
 
 - ✅ Supabase Edge Functions
