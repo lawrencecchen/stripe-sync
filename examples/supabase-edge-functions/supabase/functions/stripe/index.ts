@@ -7,7 +7,7 @@ import Stripe from "https://esm.sh/stripe@9.6.0?target=deno&no-check";
 import {
   createDenoHandler,
   createSupabaseAdapter,
-} from "https://esm.sh/stripe-sync@0.0.8";
+} from "https://esm.sh/stripe-sync@0.0.9";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.0.0-rc.4";
 
 const stripe = Stripe(Deno.env.get("STRIPE_API_KEY"), {

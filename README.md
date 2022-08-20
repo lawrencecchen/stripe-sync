@@ -28,8 +28,6 @@ supabase functions deploy stripe --no-verify-jwt
 supabase secrets set --env-file ./supabase/.env
 ```
 
-- for now, stripe-sync only works on the 2022-08-01 api version.
-
 ## Adapters
 
 https://github.com/hattipjs/hattip
@@ -55,6 +53,8 @@ Supabase-js cannot do cross schema joins. This may change, but in the meantime y
 
 Additionally, the Supabase Studio dashboard/table editor becomes very slow for large numbers of tables.
 
+- for now, stripe-sync only works on the 2022-08-01 api version.
+
 ## Prior Work
 
 This project is inspired by all of the projects listed below.
@@ -77,6 +77,7 @@ This project is inspired by all of the projects listed below.
 
 - [ ] automatically register webhooks with stripe
 - [ ] next.js example
+- [ ] remix example
 - [ ] `stripe_` prefix ddl option
 - [ ] webhook callback functions on for custom logic
 - [ ] implement all stripe best practices
@@ -88,6 +89,7 @@ This project is inspired by all of the projects listed below.
 - [ ] add tests
 - [ ] add resync
 - [ ] add relations
+- [ ] fix external accounts
 
 ## Tests
 
