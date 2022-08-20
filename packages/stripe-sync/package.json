@@ -19,7 +19,9 @@
     "dev": "tsx watch src/entry-node",
     "dev:parse": "tsx watch src/openapi-parser",
     "dev:xod": "tsx watch src/xod",
-    "build": "tsup src/index.ts --format esm,cjs,iife --dts"
+    "build": "tsup src/index.ts --format esm,cjs,iife --dts",
+    "generate": "tsx src/openapi-parser",
+    "test:events": "tsx tests/all-events.ts"
   },
   "keywords": [
     "stripe",

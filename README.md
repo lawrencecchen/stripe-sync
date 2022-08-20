@@ -53,7 +53,7 @@ https://github.com/hattipjs/hattip
 - ✅ Netlify Edge Functions
 - ✅ Bun
 
-## Comparisons
+## Prior Work
 
 This project is inspired by all of the projects listed below.
 
@@ -67,6 +67,7 @@ This project is inspired by all of the projects listed below.
   - Not open source
   - Only syncs to Postgres
 
+- https://github.com/supabase/examples/blob/main/supabase-js-v1/edge-functions/supabase/functions/stripe-webhooks/index.ts
 
 ## Todos
 
@@ -79,6 +80,11 @@ This project is inspired by all of the projects listed below.
 - [ ] remix adapter
 - [ ] cloudflare adapter
 - [ ] add tests
+- [ ] add resync
+
+webhook events that are currently broken:
+
+- checkout.session.completed
 
 ## License
 

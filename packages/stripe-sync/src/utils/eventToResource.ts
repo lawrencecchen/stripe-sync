@@ -5,6 +5,12 @@ export type Resource = {
   subresource?: string;
 };
 export function eventToResource(event: string): Resource {
+  if (event.includes("checkout.session")) {
+    return {
+      resource: "checkout_session",
+      subresource: undefined,
+    };
+  }
   const split = event.split(".");
   const resource = split.at(-2);
   invariant(resource, `Could not find resource for event: ${event}`);

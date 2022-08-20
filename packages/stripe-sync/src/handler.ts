@@ -1,7 +1,8 @@
 import { HattipHandler } from "@hattip/core";
 import Stripe from "stripe";
+import invariant from "tiny-invariant";
 import { STRIPE_EVENT_TABLE_MAP } from "../generated/eventTableMap";
-import { stripeTables } from "../generated/stripeTables";
+import { STRIPE_TABLES } from "../generated/stripeTables";
 import { DatabaseAdapter } from "./adapters/createDatabaseAdapter";
 import { logger } from "./utils/logger";
 
@@ -23,16 +24,20 @@ function getTableName(event: Stripe.Event) {
 async function handleEvent(event: Stripe.Event, opts: HandlerOptions) {
   const object = event.data.object;
   const tableName = getTableName(event);
-  const columnNames = stripeTables[tableName];
+  invariant(tableName, "missing tableName");
+  const columnNames = STRIPE_TABLES[tableName];
+  invariant(columnNames, "missing columnNames");
   const fullTableName = opts.databaseAdapter.getFromClause({
     schema: opts.databaseAdapter.schema,
     table: tableName,
   });
+  console.log(object);
   const nonNullData = Object.fromEntries(
     Object.entries(object).filter(
       ([key, value]) => value !== null && columnNames.includes(key)
     )
   );
+  console.log(nonNullData);
   await opts.databaseAdapter.upsertRow({
     data: nonNullData,
     fullTableName,
@@ -77,11 +82,12 @@ export function createHandler(opts: HandlerOptions) {
       try {
         await handleEvent(event, opts);
       } catch (e) {
+        console.log(e);
         logger.error(
           `Error handling ${event.type}`,
           JSON.stringify(e, null, 2)
         );
-        throw new Response("Error handling event", {
+        return new Response("Error handling event", {
           status: 500,
         });
       }
