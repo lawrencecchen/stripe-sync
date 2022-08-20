@@ -38,7 +38,7 @@ importers:
       '@hattip/adapter-node': 0.0.17
       '@hattip/core': 0.0.17
       '@hattip/response': 0.0.17
-      '@supabase/supabase-js': 2.0.0-rc.3
+      '@supabase/supabase-js': 2.0.0-rc.4
       stripe: 10.2.0
       tiny-invariant: 1.2.0
       zod: 3.18.0
@@ -382,8 +382,8 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/realtime-js/2.0.0-rc.3:
-    resolution: {integrity: sha512-mK+LTkBvKhkhhTyIGkSpV3uOZep060+31jIqrwuLTwtcxKJ4ANxyshvVME8WITqga7G1v/XiA/UTMu0Ee++KEg==}
+  /@supabase/realtime-js/2.0.0-rc.4:
+    resolution: {integrity: sha512-hT3osSZNnCiE6K6s2wgcm0PT7+KsBwswWgoYS5JaTOXC+zVtXACAT07ov5mX+bLl9t1mnCVfa/+bZwnzxwfxmQ==}
     dependencies:
       '@types/phoenix': 1.5.4
       websocket: 1.0.34
@@ -399,13 +399,13 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/supabase-js/2.0.0-rc.3:
-    resolution: {integrity: sha512-M4V7cg5gWBZBJxMUerj4nLJZwlmB8oQguswt1Grurn073azDgDqBrxVtxeAnnmabcc+PoSqPTH1mLRTbSkMpTQ==}
+  /@supabase/supabase-js/2.0.0-rc.4:
+    resolution: {integrity: sha512-IlpQEEOSi2Pw8PdZKx1mJEOvhQMzMqfqzm2idIJIq9BvAf9gqX4zbcUkyHJETESZQ+JtU07gJCMveMA7cLO4zA==}
     dependencies:
       '@supabase/functions-js': 2.0.0-rc.1
       '@supabase/gotrue-js': 2.0.0-rc.2
       '@supabase/postgrest-js': 1.0.0-rc.1
-      '@supabase/realtime-js': 2.0.0-rc.3
+      '@supabase/realtime-js': 2.0.0-rc.4
       '@supabase/storage-js': 2.0.0-rc.1
       cross-fetch: 3.1.5
     transitivePeerDependencies:
