@@ -1406,6 +1406,8 @@ Create Supabase function handler
 supabase functions new stripe
 ```
 
+<hr />
+
 `./supabase/functions/stripe/index.ts`
 
 ```ts
