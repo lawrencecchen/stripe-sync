@@ -352,7 +352,7 @@ CREATE TABLE stripe.source (
   "statement_descriptor" text,
   "status" text,
   "three_d_secure" jsonb,
-  "type" text not null,
+  "type" text,
   "usage" text,
   "wechat" jsonb
 );
@@ -431,7 +431,7 @@ CREATE TABLE stripe.file (
   "id" text not null,
   "links" jsonb,
   "object" text not null,
-  "purpose" text not null,
+  "purpose" text,
   "size" integer not null,
   "title" text,
   "type" text,
@@ -449,7 +449,7 @@ CREATE TABLE stripe.verification_session (
   "options" jsonb not null,
   "redaction" jsonb,
   "status" text,
-  "type" text not null,
+  "type" text,
   "url" text,
   "verified_outputs" jsonb
 );
@@ -618,7 +618,7 @@ CREATE TABLE stripe.issuing_cardholder (
   "requirements" jsonb not null,
   "spending_controls" jsonb,
   "status" text,
-  "type" text not null
+  "type" text
 );
 CREATE TABLE stripe.issuing_dispute (
   "amount" integer not null,
@@ -653,7 +653,7 @@ CREATE TABLE stripe.issuing_transaction (
   "object" text not null,
   "purchase_details" jsonb,
   "treasury" jsonb,
-  "type" text not null,
+  "type" text,
   "wallet" text
 );
 CREATE TABLE stripe.mandate (
@@ -798,7 +798,7 @@ CREATE TABLE stripe.payment_method (
   "radar_options" jsonb,
   "sepa_debit" jsonb,
   "sofort" jsonb,
-  "type" text not null,
+  "type" text,
   "us_bank_account" jsonb,
   "wechat_pay" jsonb
 );
@@ -824,7 +824,7 @@ CREATE TABLE stripe.payout (
   "source_type" text not null,
   "statement_descriptor" text,
   "status" text,
-  "type" text not null
+  "type" text
 );
 CREATE TABLE stripe.person (
   "account" text not null,
@@ -1333,7 +1333,7 @@ CREATE TABLE stripe.received_credit (
   "initiating_payment_method_details" jsonb not null,
   "linked_flows" jsonb not null,
   "livemode" boolean,
-  "network" text not null,
+  "network" text,
   "object" text not null,
   "reversal_details" jsonb,
   "status" text,
@@ -1351,7 +1351,7 @@ CREATE TABLE stripe.received_debit (
   "initiating_payment_method_details" jsonb,
   "linked_flows" jsonb not null,
   "livemode" boolean,
-  "network" text not null,
+  "network" text,
   "object" text not null,
   "reversal_details" jsonb,
   "status" text,

@@ -196,8 +196,6 @@ async function main() {
       const schema = schemaObjectValidator.parse(_schema);
       const required = new Set(schema.required);
 
-      // console.log(resource["x-stripeBypassValidation"]);
-
       // client secrets are not sent in webhook payloads
       if (required.has("client_secret")) {
         required.delete("client_secret");

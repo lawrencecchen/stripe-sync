@@ -31,13 +31,11 @@ async function handleEvent(event: Stripe.Event, opts: HandlerOptions) {
     schema: opts.databaseAdapter.schema,
     table: tableName,
   });
-  console.log(object);
   const nonNullData = Object.fromEntries(
     Object.entries(object).filter(
       ([key, value]) => value !== null && columnNames.includes(key)
     )
   );
-  console.log(nonNullData);
   await opts.databaseAdapter.upsertRow({
     data: nonNullData,
     fullTableName,
