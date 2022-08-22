@@ -173,11 +173,17 @@ async function main() {
       property: Property,
       required: boolean
     ) {
+      if (column === "id") {
+        return `"${column}" ${resolveType(
+          column,
+          property
+        )} PRIMARY KEY NOT NULL`;
+      }
       if (property["x-stripeBypassValidation"]) {
         return `"${column}" ${resolveType(column, property)}`;
       }
       if (required) {
-        return `"${column}" ${resolveType(column, property)} not null`;
+        return `"${column}" ${resolveType(column, property)} NOT NULL`;
       } else {
         return `"${column}" ${resolveType(column, property)}`;
       }
@@ -190,7 +196,7 @@ async function main() {
       tableColumns[resource] = Object.keys(schema.properties);
     }
 
-    let ddl = `CREATE SCHEMA stripe;\n`;
+    let ddl = "";
     for (const [resource, _schema] of Object.entries(dereferencedResources)) {
       ddl += `CREATE TABLE stripe.${resource} (\n`;
       const schema = schemaObjectValidator.parse(_schema);
@@ -227,8 +233,24 @@ async function main() {
       ddl += ");\n";
     }
 
+    const postgres_ddl = `CREATE SCHEMA stripe;\n` + ddl;
+    const postgres_schemaless_no_prefix = ddl.replace(/stripe\./g, "public.");
+    const postgres_schemaless_ddl = ddl.replace(/stripe\./g, "stripe_");
+    const mysql_ddl = postgres_schemaless_ddl
+      .replace(/jsonb/g, "json")
+      .replace(/\"/g, "`");
+
     fs.ensureDirSync("./generated");
-    fs.writeFileSync("./generated/postgres.sql", ddl);
+    fs.writeFileSync("./generated/postgres.sql", postgres_ddl);
+    fs.writeFileSync(
+      "./generated/postgres-schemaless-no-prefix.sql",
+      postgres_schemaless_no_prefix
+    );
+    fs.writeFileSync(
+      "./generated/postgres-schemaless.sql",
+      postgres_schemaless_ddl
+    );
+    fs.writeFileSync("./generated/mysql.sql", mysql_ddl);
     fs.writeFileSync(
       "./generated/tableColumns.json",
       JSON.stringify(tableColumns, null, 2)

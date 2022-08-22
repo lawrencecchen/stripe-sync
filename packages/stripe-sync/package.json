@@ -17,10 +17,10 @@
   "homepage": "https://stipe-sync.vercel.app",
   "scripts": {
     "dev": "tsx watch src/entry-node",
-    "dev:parse": "tsx watch src/openapi-parser",
+    "dev:parse": "tsx watch src/generate",
     "dev:xod": "tsx watch src/xod",
     "build": "tsup src/index.ts src/entrypoints/*.ts --format esm,cjs,iife --dts",
-    "generate": "tsx src/openapi-parser",
+    "generate": "tsx src/generate",
     "test:events": "tsx tests/all-events.ts"
   },
   "keywords": [

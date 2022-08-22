@@ -83,11 +83,9 @@ This project is inspired by all of the projects listed below.
 
 ## Todos
 
-- [ ] make ids primary keys
+- [x] make ids primary keys
 - [ ] automatically register webhooks with stripe
-- [ ] next.js example
-- [ ] remix example
-- [ ] `stripe_` prefix ddl option
+- [x] `stripe_` prefix ddl option
 - [ ] webhook callback functions on for custom logic
 - [ ] implement all stripe best practices
   - [ ] make event handling idempotent (https://stripe.com/docs/webhooks/best-practices)

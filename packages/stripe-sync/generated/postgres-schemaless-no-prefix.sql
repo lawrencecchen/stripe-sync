@@ -1,10 +1,9 @@
-CREATE SCHEMA stripe;
-CREATE TABLE stripe.application (
+CREATE TABLE public.application (
   "id" text PRIMARY KEY NOT NULL,
   "name" text,
   "object" text NOT NULL
 );
-CREATE TABLE stripe.account (
+CREATE TABLE public.account (
   "business_profile" jsonb,
   "business_type" text,
   "capabilities" jsonb,
@@ -28,7 +27,7 @@ CREATE TABLE stripe.account (
   "tos_acceptance" jsonb,
   "type" text
 );
-CREATE TABLE stripe.application_fee (
+CREATE TABLE public.application_fee (
   "account" jsonb NOT NULL,
   "amount" integer NOT NULL,
   "amount_refunded" integer NOT NULL,
@@ -44,7 +43,7 @@ CREATE TABLE stripe.application_fee (
   "refunded" boolean NOT NULL,
   "refunds" jsonb NOT NULL
 );
-CREATE TABLE stripe.refund (
+CREATE TABLE public.refund (
   "amount" integer NOT NULL,
   "balance_transaction" jsonb,
   "charge" jsonb,
@@ -65,7 +64,7 @@ CREATE TABLE stripe.refund (
   "status" text,
   "transfer_reversal" jsonb
 );
-CREATE TABLE stripe.balance (
+CREATE TABLE public.balance (
   "available" jsonb NOT NULL,
   "connect_reserved" jsonb,
   "instant_available" jsonb,
@@ -74,7 +73,7 @@ CREATE TABLE stripe.balance (
   "object" text NOT NULL,
   "pending" jsonb NOT NULL
 );
-CREATE TABLE stripe.configuration (
+CREATE TABLE public.configuration (
   "active" boolean NOT NULL,
   "application" jsonb,
   "business_profile" jsonb NOT NULL,
@@ -88,7 +87,7 @@ CREATE TABLE stripe.configuration (
   "object" text NOT NULL,
   "updated" integer NOT NULL
 );
-CREATE TABLE stripe.session (
+CREATE TABLE public.session (
   "configuration" jsonb,
   "created" integer,
   "customer" text NOT NULL,
@@ -100,7 +99,7 @@ CREATE TABLE stripe.session (
   "return_url" text,
   "url" text NOT NULL
 );
-CREATE TABLE stripe.capability (
+CREATE TABLE public.capability (
   "account" jsonb NOT NULL,
   "future_requirements" jsonb,
   "id" text PRIMARY KEY NOT NULL,
@@ -110,14 +109,14 @@ CREATE TABLE stripe.capability (
   "requirements" jsonb,
   "status" text
 );
-CREATE TABLE stripe.cash_balance (
+CREATE TABLE public.cash_balance (
   "available" jsonb,
   "customer" text NOT NULL,
   "livemode" boolean,
   "object" text NOT NULL,
   "settings" jsonb NOT NULL
 );
-CREATE TABLE stripe.charge (
+CREATE TABLE public.charge (
   "amount" integer NOT NULL,
   "amount_captured" integer NOT NULL,
   "amount_refunded" integer NOT NULL,
@@ -164,7 +163,7 @@ CREATE TABLE stripe.charge (
   "transfer_data" jsonb,
   "transfer_group" text
 );
-CREATE TABLE stripe.dispute (
+CREATE TABLE public.dispute (
   "amount" integer NOT NULL,
   "balance_transactions" jsonb NOT NULL,
   "charge" jsonb NOT NULL,
@@ -181,7 +180,7 @@ CREATE TABLE stripe.dispute (
   "reason" text NOT NULL,
   "status" text
 );
-CREATE TABLE stripe.checkout_session (
+CREATE TABLE public.checkout_session (
   "after_expiration" jsonb,
   "allow_promotion_codes" boolean,
   "amount_subtotal" integer,
@@ -226,7 +225,7 @@ CREATE TABLE stripe.checkout_session (
   "total_details" jsonb,
   "url" text
 );
-CREATE TABLE stripe.coupon (
+CREATE TABLE public.coupon (
   "amount_off" integer,
   "applies_to" jsonb,
   "created" integer,
@@ -245,7 +244,7 @@ CREATE TABLE stripe.coupon (
   "times_redeemed" integer NOT NULL,
   "valid" boolean NOT NULL
 );
-CREATE TABLE stripe.credit_note (
+CREATE TABLE public.credit_note (
   "amount" integer NOT NULL,
   "created" integer,
   "currency" text NOT NULL,
@@ -274,7 +273,7 @@ CREATE TABLE stripe.credit_note (
   "type" text NOT NULL,
   "voided_at" integer
 );
-CREATE TABLE stripe.customer (
+CREATE TABLE public.customer (
   "address" jsonb,
   "balance" integer,
   "cash_balance" jsonb,
@@ -304,7 +303,7 @@ CREATE TABLE stripe.customer (
   "tax_ids" jsonb,
   "test_clock" jsonb
 );
-CREATE TABLE stripe.discount (
+CREATE TABLE public.discount (
   "checkout_session" text,
   "coupon" jsonb NOT NULL,
   "customer" jsonb,
@@ -317,7 +316,7 @@ CREATE TABLE stripe.discount (
   "start" integer NOT NULL,
   "subscription" text
 );
-CREATE TABLE stripe.source (
+CREATE TABLE public.source (
   "ach_credit_transfer" jsonb,
   "ach_debit" jsonb,
   "acss_debit" jsonb,
@@ -356,7 +355,7 @@ CREATE TABLE stripe.source (
   "usage" text,
   "wechat" jsonb
 );
-CREATE TABLE stripe.subscription (
+CREATE TABLE public.subscription (
   "application" jsonb,
   "application_fee_percent" integer,
   "automatic_tax" jsonb NOT NULL,
@@ -398,7 +397,7 @@ CREATE TABLE stripe.subscription (
   "trial_end" integer,
   "trial_start" integer
 );
-CREATE TABLE stripe.tax_id (
+CREATE TABLE public.tax_id (
   "country" text,
   "created" integer,
   "customer" jsonb,
@@ -409,7 +408,7 @@ CREATE TABLE stripe.tax_id (
   "value" text NOT NULL,
   "verification" jsonb
 );
-CREATE TABLE stripe.customer_cash_balance_transaction (
+CREATE TABLE public.customer_cash_balance_transaction (
   "applied_to_payment" jsonb,
   "created" integer,
   "currency" text NOT NULL,
@@ -424,7 +423,7 @@ CREATE TABLE stripe.customer_cash_balance_transaction (
   "type" text NOT NULL,
   "unapplied_from_payment" jsonb
 );
-CREATE TABLE stripe.file (
+CREATE TABLE public.file (
   "created" integer,
   "expires_at" integer,
   "filename" text,
@@ -437,7 +436,7 @@ CREATE TABLE stripe.file (
   "type" text,
   "url" text
 );
-CREATE TABLE stripe.verification_session (
+CREATE TABLE public.verification_session (
   "client_secret" text,
   "created" integer,
   "id" text PRIMARY KEY NOT NULL,
@@ -453,7 +452,7 @@ CREATE TABLE stripe.verification_session (
   "url" text,
   "verified_outputs" jsonb
 );
-CREATE TABLE stripe.invoice (
+CREATE TABLE public.invoice (
   "account_country" text,
   "account_name" text,
   "account_tax_ids" jsonb,
@@ -529,7 +528,7 @@ CREATE TABLE stripe.invoice (
   "transfer_data" jsonb,
   "webhooks_delivered_at" integer
 );
-CREATE TABLE stripe.invoiceitem (
+CREATE TABLE public.invoiceitem (
   "amount" integer NOT NULL,
   "currency" text NOT NULL,
   "customer" jsonb NOT NULL,
@@ -553,7 +552,7 @@ CREATE TABLE stripe.invoiceitem (
   "unit_amount" integer,
   "unit_amount_decimal" text
 );
-CREATE TABLE stripe.issuing_authorization (
+CREATE TABLE public.issuing_authorization (
   "amount" integer NOT NULL,
   "amount_details" jsonb,
   "approved" boolean NOT NULL,
@@ -578,7 +577,7 @@ CREATE TABLE stripe.issuing_authorization (
   "verification_data" jsonb NOT NULL,
   "wallet" text
 );
-CREATE TABLE stripe.issuing_card (
+CREATE TABLE public.issuing_card (
   "brand" text NOT NULL,
   "cancellation_reason" text,
   "cardholder" jsonb NOT NULL,
@@ -603,7 +602,7 @@ CREATE TABLE stripe.issuing_card (
   "type" text NOT NULL,
   "wallets" jsonb
 );
-CREATE TABLE stripe.issuing_cardholder (
+CREATE TABLE public.issuing_cardholder (
   "billing" jsonb NOT NULL,
   "company" jsonb,
   "created" integer,
@@ -620,7 +619,7 @@ CREATE TABLE stripe.issuing_cardholder (
   "status" text,
   "type" text
 );
-CREATE TABLE stripe.issuing_dispute (
+CREATE TABLE public.issuing_dispute (
   "amount" integer NOT NULL,
   "balance_transactions" jsonb,
   "created" integer,
@@ -634,7 +633,7 @@ CREATE TABLE stripe.issuing_dispute (
   "transaction" jsonb NOT NULL,
   "treasury" jsonb
 );
-CREATE TABLE stripe.issuing_transaction (
+CREATE TABLE public.issuing_transaction (
   "amount" integer NOT NULL,
   "amount_details" jsonb,
   "authorization" jsonb,
@@ -656,7 +655,7 @@ CREATE TABLE stripe.issuing_transaction (
   "type" text,
   "wallet" text
 );
-CREATE TABLE stripe.mandate (
+CREATE TABLE public.mandate (
   "customer_acceptance" jsonb NOT NULL,
   "id" text PRIMARY KEY NOT NULL,
   "livemode" boolean,
@@ -668,7 +667,7 @@ CREATE TABLE stripe.mandate (
   "status" text,
   "type" text NOT NULL
 );
-CREATE TABLE stripe.order (
+CREATE TABLE public.order (
   "amount_subtotal" integer NOT NULL,
   "amount_total" integer NOT NULL,
   "application" jsonb,
@@ -693,7 +692,7 @@ CREATE TABLE stripe.order (
   "tax_details" jsonb,
   "total_details" jsonb NOT NULL
 );
-CREATE TABLE stripe.payment_intent (
+CREATE TABLE public.payment_intent (
   "amount" integer NOT NULL,
   "amount_capturable" integer,
   "amount_details" jsonb,
@@ -733,7 +732,7 @@ CREATE TABLE stripe.payment_intent (
   "transfer_data" jsonb,
   "transfer_group" text
 );
-CREATE TABLE stripe.payment_link (
+CREATE TABLE public.payment_link (
   "active" boolean NOT NULL,
   "after_completion" jsonb NOT NULL,
   "allow_promotion_codes" boolean NOT NULL,
@@ -762,7 +761,7 @@ CREATE TABLE stripe.payment_link (
   "transfer_data" jsonb,
   "url" text NOT NULL
 );
-CREATE TABLE stripe.payment_method (
+CREATE TABLE public.payment_method (
   "acss_debit" jsonb,
   "affirm" jsonb,
   "afterpay_clearpay" jsonb,
@@ -802,7 +801,7 @@ CREATE TABLE stripe.payment_method (
   "us_bank_account" jsonb,
   "wechat_pay" jsonb
 );
-CREATE TABLE stripe.payout (
+CREATE TABLE public.payout (
   "amount" integer NOT NULL,
   "arrival_date" integer NOT NULL,
   "automatic" boolean NOT NULL,
@@ -826,7 +825,7 @@ CREATE TABLE stripe.payout (
   "status" text,
   "type" text
 );
-CREATE TABLE stripe.person (
+CREATE TABLE public.person (
   "account" text NOT NULL,
   "address" jsonb,
   "address_kana" jsonb,
@@ -858,7 +857,7 @@ CREATE TABLE stripe.person (
   "ssn_last_4_provided" boolean,
   "verification" jsonb
 );
-CREATE TABLE stripe.plan (
+CREATE TABLE public.plan (
   "active" boolean NOT NULL,
   "aggregate_usage" text,
   "amount" integer,
@@ -880,7 +879,7 @@ CREATE TABLE stripe.plan (
   "trial_period_days" integer,
   "usage_type" text NOT NULL
 );
-CREATE TABLE stripe.price (
+CREATE TABLE public.price (
   "active" boolean NOT NULL,
   "billing_scheme" text NOT NULL,
   "created" integer,
@@ -903,7 +902,7 @@ CREATE TABLE stripe.price (
   "unit_amount" integer,
   "unit_amount_decimal" text
 );
-CREATE TABLE stripe.product (
+CREATE TABLE public.product (
   "active" boolean NOT NULL,
   "created" integer,
   "default_price" jsonb,
@@ -922,7 +921,7 @@ CREATE TABLE stripe.product (
   "updated" integer NOT NULL,
   "url" text
 );
-CREATE TABLE stripe.promotion_code (
+CREATE TABLE public.promotion_code (
   "active" boolean NOT NULL,
   "code" text NOT NULL,
   "coupon" jsonb NOT NULL,
@@ -937,7 +936,7 @@ CREATE TABLE stripe.promotion_code (
   "restrictions" jsonb NOT NULL,
   "times_redeemed" integer NOT NULL
 );
-CREATE TABLE stripe.quote (
+CREATE TABLE public.quote (
   "amount_subtotal" integer NOT NULL,
   "amount_total" integer NOT NULL,
   "application" jsonb,
@@ -974,7 +973,7 @@ CREATE TABLE stripe.quote (
   "total_details" jsonb NOT NULL,
   "transfer_data" jsonb
 );
-CREATE TABLE stripe.early_fraud_warning (
+CREATE TABLE public.early_fraud_warning (
   "actionable" boolean NOT NULL,
   "charge" jsonb NOT NULL,
   "created" integer,
@@ -984,7 +983,7 @@ CREATE TABLE stripe.early_fraud_warning (
   "object" text NOT NULL,
   "payment_intent" jsonb
 );
-CREATE TABLE stripe.recipient (
+CREATE TABLE public.recipient (
   "active_account" jsonb,
   "cards" jsonb,
   "created" integer,
@@ -1000,7 +999,7 @@ CREATE TABLE stripe.recipient (
   "rolled_back_from" jsonb,
   "type" text NOT NULL
 );
-CREATE TABLE stripe.report_run (
+CREATE TABLE public.report_run (
   "created" integer,
   "error" text,
   "id" text PRIMARY KEY NOT NULL,
@@ -1012,7 +1011,7 @@ CREATE TABLE stripe.report_run (
   "status" text,
   "succeeded_at" integer
 );
-CREATE TABLE stripe.report_type (
+CREATE TABLE public.report_type (
   "data_available_end" integer NOT NULL,
   "data_available_start" integer NOT NULL,
   "default_columns" jsonb,
@@ -1023,7 +1022,7 @@ CREATE TABLE stripe.report_type (
   "updated" integer NOT NULL,
   "version" integer NOT NULL
 );
-CREATE TABLE stripe.review (
+CREATE TABLE public.review (
   "billing_zip" text,
   "charge" jsonb,
   "closed_reason" text,
@@ -1039,7 +1038,7 @@ CREATE TABLE stripe.review (
   "reason" text NOT NULL,
   "session" jsonb
 );
-CREATE TABLE stripe.setup_intent (
+CREATE TABLE public.setup_intent (
   "application" jsonb,
   "attach_to_self" boolean,
   "cancellation_reason" text,
@@ -1064,7 +1063,7 @@ CREATE TABLE stripe.setup_intent (
   "status" text,
   "usage" text NOT NULL
 );
-CREATE TABLE stripe.scheduled_query_run (
+CREATE TABLE public.scheduled_query_run (
   "created" integer,
   "data_load_time" integer NOT NULL,
   "error" jsonb,
@@ -1077,7 +1076,7 @@ CREATE TABLE stripe.scheduled_query_run (
   "status" text,
   "title" text NOT NULL
 );
-CREATE TABLE stripe.sku (
+CREATE TABLE public.sku (
   "active" boolean NOT NULL,
   "attributes" jsonb NOT NULL,
   "created" integer,
@@ -1093,7 +1092,7 @@ CREATE TABLE stripe.sku (
   "product" jsonb NOT NULL,
   "updated" integer NOT NULL
 );
-CREATE TABLE stripe.transaction (
+CREATE TABLE public.transaction (
   "ach_credit_transfer" jsonb,
   "amount" integer NOT NULL,
   "chf_credit_transfer" jsonb,
@@ -1109,7 +1108,7 @@ CREATE TABLE stripe.transaction (
   "status" text,
   "type" text NOT NULL
 );
-CREATE TABLE stripe.subscription_schedule (
+CREATE TABLE public.subscription_schedule (
   "application" jsonb,
   "canceled_at" integer,
   "completed_at" integer,
@@ -1129,7 +1128,7 @@ CREATE TABLE stripe.subscription_schedule (
   "subscription" jsonb,
   "test_clock" jsonb
 );
-CREATE TABLE stripe.tax_rate (
+CREATE TABLE public.tax_rate (
   "active" boolean NOT NULL,
   "country" text,
   "created" integer,
@@ -1145,7 +1144,7 @@ CREATE TABLE stripe.tax_rate (
   "state" text,
   "tax_type" text
 );
-CREATE TABLE stripe.reader (
+CREATE TABLE public.reader (
   "action" jsonb,
   "device_sw_version" text,
   "device_type" text NOT NULL,
@@ -1159,7 +1158,7 @@ CREATE TABLE stripe.reader (
   "serial_number" text NOT NULL,
   "status" text
 );
-CREATE TABLE stripe.test_clock (
+CREATE TABLE public.test_clock (
   "created" integer,
   "deletes_after" integer NOT NULL,
   "frozen_time" integer NOT NULL,
@@ -1169,7 +1168,7 @@ CREATE TABLE stripe.test_clock (
   "object" text NOT NULL,
   "status" text
 );
-CREATE TABLE stripe.topup (
+CREATE TABLE public.topup (
   "amount" integer NOT NULL,
   "balance_transaction" jsonb,
   "created" integer,
@@ -1187,7 +1186,7 @@ CREATE TABLE stripe.topup (
   "status" text,
   "transfer_group" text
 );
-CREATE TABLE stripe.transfer (
+CREATE TABLE public.transfer (
   "amount" integer NOT NULL,
   "amount_reversed" integer NOT NULL,
   "balance_transaction" jsonb,
@@ -1206,7 +1205,7 @@ CREATE TABLE stripe.transfer (
   "source_type" text,
   "transfer_group" text
 );
-CREATE TABLE stripe.credit_reversal (
+CREATE TABLE public.credit_reversal (
   "amount" integer NOT NULL,
   "currency" text NOT NULL,
   "financial_account" text NOT NULL,
@@ -1221,7 +1220,7 @@ CREATE TABLE stripe.credit_reversal (
   "status_transitions" jsonb NOT NULL,
   "transaction" jsonb
 );
-CREATE TABLE stripe.debit_reversal (
+CREATE TABLE public.debit_reversal (
   "amount" integer NOT NULL,
   "currency" text NOT NULL,
   "financial_account" text,
@@ -1237,7 +1236,7 @@ CREATE TABLE stripe.debit_reversal (
   "status_transitions" jsonb NOT NULL,
   "transaction" jsonb
 );
-CREATE TABLE stripe.financial_account (
+CREATE TABLE public.financial_account (
   "active_features" jsonb NOT NULL,
   "balance" jsonb NOT NULL,
   "country" text NOT NULL,
@@ -1255,7 +1254,7 @@ CREATE TABLE stripe.financial_account (
   "status_details" jsonb NOT NULL,
   "supported_currencies" jsonb NOT NULL
 );
-CREATE TABLE stripe.inbound_transfer (
+CREATE TABLE public.inbound_transfer (
   "amount" integer NOT NULL,
   "cancelable" boolean NOT NULL,
   "created" integer,
@@ -1277,7 +1276,7 @@ CREATE TABLE stripe.inbound_transfer (
   "status_transitions" jsonb NOT NULL,
   "transaction" jsonb
 );
-CREATE TABLE stripe.outbound_payment (
+CREATE TABLE public.outbound_payment (
   "amount" integer NOT NULL,
   "cancelable" boolean NOT NULL,
   "created" integer,
@@ -1300,7 +1299,7 @@ CREATE TABLE stripe.outbound_payment (
   "status_transitions" jsonb NOT NULL,
   "transaction" jsonb NOT NULL
 );
-CREATE TABLE stripe.outbound_transfer (
+CREATE TABLE public.outbound_transfer (
   "amount" integer NOT NULL,
   "cancelable" boolean NOT NULL,
   "created" integer,
@@ -1321,7 +1320,7 @@ CREATE TABLE stripe.outbound_transfer (
   "status_transitions" jsonb NOT NULL,
   "transaction" jsonb NOT NULL
 );
-CREATE TABLE stripe.received_credit (
+CREATE TABLE public.received_credit (
   "amount" integer NOT NULL,
   "created" integer,
   "currency" text NOT NULL,
@@ -1339,7 +1338,7 @@ CREATE TABLE stripe.received_credit (
   "status" text,
   "transaction" jsonb
 );
-CREATE TABLE stripe.received_debit (
+CREATE TABLE public.received_debit (
   "amount" integer NOT NULL,
   "created" integer,
   "currency" text NOT NULL,
