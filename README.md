@@ -69,9 +69,9 @@ This project is inspired by all of the projects listed below.
 
 - https://github.com/supabase/stripe-sync-engine
 
-  - Needs a full blown
+  - Needs a full blown Docker setup to run. This is a bit overkill for a simple webhook syncer.
   - Can sync only a limited subset of Webhook events as of August 2022
-  - Only syncs to Supabase
+  - Only syncs to Supabase/Postgrest
 
 - https://www.sequin.io/
 
