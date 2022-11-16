@@ -2,6 +2,10 @@
 
 Sync Stripe webhook events directly into your database.
 
+- ✅ Automatically verify webhook signatures
+- ✅ Webhook callbacks
+- ✅ Sync every Stripe webhook to database tables
+
 Note: this is experimental. Stuff might be broken.
 
 ## Setup
