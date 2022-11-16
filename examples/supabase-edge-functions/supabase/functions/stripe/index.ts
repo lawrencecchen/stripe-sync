@@ -1,9 +1,7 @@
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.1.0";
-import {
-  createDenoHandler,
-  createSupabaseAdapter,
-} from "https://esm.sh/stripe-sync@0.1.0";
+import { createDenoHandler } from "https://esm.sh/stripe-sync@0.1.1/adapters/deno";
+import { createSupabaseAdapter } from "https://esm.sh/stripe-sync@0.1.1/databaseAdapters/deno";
 import Stripe from "https://esm.sh/stripe@10.17.0?target=deno&no-check";
 import invariant from "https://esm.sh/tiny-invariant@1.3.1";
 

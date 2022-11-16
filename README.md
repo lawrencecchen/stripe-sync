@@ -91,8 +91,7 @@ This project is inspired by all of the projects listed below.
   - [ ] make event handling idempotent (https://stripe.com/docs/webhooks/best-practices)
   - [ ] check that request comes from valid ip or is local development (https://stripe.com/files/ips/ips_webhooks.json)
 - [x] next.js adapter
-- [ ] remix adapter
-- [ ] cloudflare adapter
+- [ ] fetch adapter (remix/cloudflare/deno/bun)
 - [ ] add tests
 - [ ] add resync
 - [ ] add relations

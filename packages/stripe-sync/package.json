@@ -1,6 +1,6 @@
 {
   "name": "stripe-sync",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "sync stripe data to your SQL database",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -30,6 +30,16 @@
       "import": "./dist/adapters/next.mjs",
       "require": "./dist/adapters/next.js",
       "default": "./dist/adapters/next.js"
+    },
+    "./databaseAdapters/supabase": {
+      "import": "./dist/databaseAdapters/supabase.mjs",
+      "require": "./dist/databaseAdapters/supabase.js",
+      "default": "./dist/databaseAdapters/supabase.js"
+    },
+    "./databaseAdapters/createDatabaseAdapter": {
+      "import": "./dist/databaseAdapters/createDatabaseAdapter.mjs",
+      "require": "./dist/databaseAdapters/createDatabaseAdapter.js",
+      "default": "./dist/databaseAdapters/createDatabaseAdapter.js"
     }
   },
   "typesVersions": {
@@ -48,6 +58,12 @@
       ],
       "adapters/next": [
         "dist/adapters/next.d.ts"
+      ],
+      "databaseAdapter/supabase": [
+        "dist/databaseAdapter/supabase.d.ts"
+      ],
+      "databaseAdapter/createDatabaseAdapter": [
+        "dist/databaseAdapter/createDatabaseAdapter.d.ts"
       ]
     }
   },
@@ -65,7 +81,7 @@
     "dev": "tsx watch src/entry-node",
     "dev:parse": "tsx watch src/generate",
     "dev:xod": "tsx watch src/xod",
-    "build": "tsup src/index.ts src/adapters/*.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts src/adapters/*.ts src/databaseAdapters/*.ts --format esm,cjs --dts",
     "generate": "tsx src/generate",
     "test:events": "tsx tests/all-events.ts"
   },
