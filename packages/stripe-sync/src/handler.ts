@@ -19,6 +19,7 @@ export interface HandlerOptions {
   insertIntoDatabaseFirst?: boolean;
   callbacks?: StripeWebhookCallbacks;
   cryptoProvider?: Stripe.CryptoProvider;
+  enableLogs?: boolean;
 }
 
 function getTableName(event: Stripe.Event) {
@@ -31,6 +32,7 @@ function getTableName(event: Stripe.Event) {
 async function saveToDatabase(opts: {
   event: Stripe.Event;
   databaseAdapter: DatabaseAdapter;
+  handlerOpts: HandlerOptions;
 }) {
   const { event, databaseAdapter } = opts;
   const object = event.data.object;
@@ -52,7 +54,8 @@ async function saveToDatabase(opts: {
     fullTableName,
     columnNames,
   });
-  logger.log(`Saved ${event.type} to ${fullTableName}. eventId: ${event.id}`);
+  opts.handlerOpts.enableLogs &&
+    logger.log(`Saved ${event.type} to ${fullTableName}. eventId: ${event.id}`);
 }
 
 async function dispatchCallback(opts: {
@@ -96,12 +99,17 @@ export function createHandler(opts: HandlerOptions) {
           status: 401,
         });
       }
-      logger.log(`Received triggered ${event.type}. (${event.id})`);
+      opts.enableLogs &&
+        logger.log(`Received triggered ${event.type}. (${event.id})`);
       try {
         const jobs = [] as Array<Promise<any>>;
         if (opts.databaseAdapter) {
           jobs.push(
-            saveToDatabase({ event, databaseAdapter: opts.databaseAdapter })
+            saveToDatabase({
+              event,
+              databaseAdapter: opts.databaseAdapter,
+              handlerOpts: opts,
+            })
           );
         }
         if (opts.callbacks) {
