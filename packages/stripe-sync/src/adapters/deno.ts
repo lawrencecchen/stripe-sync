@@ -6,5 +6,5 @@ export type Handler = (
   connInfo: any
 ) => Response | Promise<Response>;
 
-export const createStripeSyncHandler = (opts: HandlerOptions) =>
+export const createDenoHandler = (opts: HandlerOptions) =>
   createDenoRequestHandler(createHandler(opts)) as Handler;
