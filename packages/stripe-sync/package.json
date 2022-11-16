@@ -1,6 +1,6 @@
 {
   "name": "stripe-sync",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "sync stripe data to your SQL database",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

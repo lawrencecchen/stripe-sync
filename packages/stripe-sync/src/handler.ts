@@ -1,9 +1,9 @@
-import { HattipHandler } from "@hattip/core";
-import Stripe from "stripe";
+import { type HattipHandler } from "@hattip/core";
+import type Stripe from "stripe";
 import invariant from "tiny-invariant";
 import { STRIPE_EVENT_TABLE_MAP } from "../generated/eventTableMap";
 import { STRIPE_TABLES } from "../generated/stripeTables";
-import { DatabaseAdapter } from "./adapters/createDatabaseAdapter";
+import { type DatabaseAdapter } from "./adapters/createDatabaseAdapter";
 import { logger } from "./utils/logger";
 
 export interface HandlerOptions {
