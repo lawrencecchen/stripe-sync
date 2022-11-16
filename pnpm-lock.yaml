@@ -13,7 +13,7 @@ importers:
       vitepress: 1.0.0-alpha.8_tbpndr44ulefs3hehwpi2mkf2y
       vue: 3.2.37
 
-  apps/nextjs:
+  examples/nextjs:
     specifiers:
       '@types/node': ^18.0.0
       '@types/react': ^18.0.14
@@ -26,18 +26,18 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       stripe: ^10.2.0
-      stripe-sync: workspace:*
+      stripe-sync: ^0.1.0
       typescript: ^4.8.4
       zod: ^3.18.0
     dependencies:
       next: 13.0.2_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      stripe: 10.2.0
+      stripe: 10.17.0
       stripe-sync: link:../../packages/stripe-sync
-      zod: 3.18.0
+      zod: 3.19.1
     devDependencies:
-      '@types/node': 18.7.6
+      '@types/node': 18.11.9
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
       '@typescript-eslint/eslint-plugin': 5.43.0_wze2rj5tow7zwqpgbdx2buoy3m
@@ -660,9 +660,6 @@ packages:
 
   /@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
-
-  /@types/node/18.7.6:
-    resolution: {integrity: sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==}
 
   /@types/phoenix/1.5.4:
     resolution: {integrity: sha512-L5eZmzw89eXBKkiqVBcJfU1QGx9y+wurRIEgt0cuLH0hwNtVUxtx+6cu0R2STwWj468sjXyBYPYDtGclUd1kjQ==}
@@ -3307,14 +3304,6 @@ packages:
       qs: 6.11.0
     dev: false
 
-  /stripe/10.2.0:
-    resolution: {integrity: sha512-y0tW31r8rk0cGAVN+lxZUU0yqcFq7y+Kmi0SKuNPxDVKRx1aCvU1xpnVR9mZv5wNQOKpsx5C14UpeenoYu8+7A==}
-    engines: {node: ^8.1 || >=10.*}
-    dependencies:
-      '@types/node': 18.7.6
-      qs: 6.11.0
-    dev: false
-
   /styled-jsx/5.1.0_react@18.2.0:
     resolution: {integrity: sha512-/iHaRJt9U7T+5tp6TRelLnqBqiaIT0HsO0+vgyj8hK2KUk7aejFqRrumqPUlAqDwAj8IbS/1hk3IhBAAK/FCUQ==}
     engines: {node: '>= 12.0.0'}
@@ -3718,10 +3707,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  /zod/3.18.0:
-    resolution: {integrity: sha512-gwTm8RfUCe8l9rDwN5r2A17DkAa8Ez4Yl4yXqc5VqeGaXaJahzYYXbTwvhroZi0SNBqTwh/bKm2N0mpCzuw4bA==}
-    dev: false
 
   /zod/3.19.1:
     resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
