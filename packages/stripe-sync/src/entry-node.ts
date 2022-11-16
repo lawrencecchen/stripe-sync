@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
 import Stripe from "stripe";
 import z from "zod";
-import { createSupabaseAdapter } from "./adapters/supabase";
+import { createSupabaseAdapter } from "./databaseAdapters/supabase";
 import { createHandler } from "./handler";
 dotenv.config();
 

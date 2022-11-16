@@ -2,7 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { createDatabaseAdapter } from "./createDatabaseAdapter";
 
 export function createSupabaseAdapter(opts: {
-  supabase: SupabaseClient<any, string, any>;
+  supabase: SupabaseClient<any, any, any>;
   schema?: string;
 }) {
   const { supabase, schema } = opts;

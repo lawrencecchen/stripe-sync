@@ -86,11 +86,11 @@ This project is inspired by all of the projects listed below.
 - [x] make ids primary keys
 - [ ] automatically register webhooks with stripe
 - [x] `stripe_` prefix ddl option
-- [ ] webhook callback functions on for custom logic
+- [x] webhook callback functions on for custom logic
 - [ ] implement all stripe best practices
   - [ ] make event handling idempotent (https://stripe.com/docs/webhooks/best-practices)
   - [ ] check that request comes from valid ip or is local development (https://stripe.com/files/ips/ips_webhooks.json)
-- [ ] next.js adapter
+- [x] next.js adapter
 - [ ] remix adapter
 - [ ] cloudflare adapter
 - [ ] add tests
