@@ -74,9 +74,9 @@ export function createHandler(opts: HandlerOptions) {
   const handler: HattipHandler = async (context) => {
     const { request } = context;
     try {
-      if (request.method !== "POST") {
-        throw new Error("Only POST requests are allowed");
-      }
+      // if (request.method !== "POST") {
+      //   throw new Error("Only POST requests are allowed");
+      // }
 
       const signature = request.headers.get("stripe-signature");
       if (!signature) {
