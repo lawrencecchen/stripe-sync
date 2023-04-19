@@ -11,7 +11,7 @@
   "author": "Lawrence Chen",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "1.0.0-alpha.8",
-    "vue": "^3.2.37"
+    "vitepress": "1.0.0-alpha.72",
+    "vue": "^3.2.47"
   }
 }

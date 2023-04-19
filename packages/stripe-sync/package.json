@@ -97,24 +97,24 @@
   "license": "MIT",
   "devDependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
-    "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.11.9",
-    "@types/prettier": "^2.7.1",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.15.11",
+    "@types/prettier": "^2.7.2",
     "dotenv": "^16.0.3",
-    "fs-extra": "^10.1.0",
-    "prettier": "^2.7.1",
-    "tsup": "^6.5.0",
-    "tsx": "^3.12.1",
-    "typescript": "^4.9.3"
+    "fs-extra": "^11.1.1",
+    "prettier": "^2.8.7",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@hattip/adapter-deno": "^0.0.22",
-    "@hattip/adapter-node": "^0.0.22",
-    "@hattip/core": "^0.0.22",
-    "@hattip/response": "^0.0.22",
-    "@supabase/supabase-js": "^2.1.0",
-    "stripe": "^10.17.0",
+    "@hattip/adapter-deno": "^0.0.33",
+    "@hattip/adapter-node": "^0.0.33",
+    "@hattip/core": "^0.0.33",
+    "@hattip/response": "^0.0.33",
+    "@supabase/supabase-js": "^2.21.0",
+    "stripe": "^12.1.1",
     "tiny-invariant": "^1.3.1",
-    "zod": "^3.19.1"
+    "zod": "^3.21.4"
   }
 }
